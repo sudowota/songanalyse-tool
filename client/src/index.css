@@ -1,0 +1,299 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f4f4f5;
+  color: #111827;
+}
+
+main {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 32px;
+}
+
+nav {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+
+nav a {
+  color: #111827;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+h1 {
+  font-size: 40px;
+  margin-bottom: 24px;
+}
+
+h2 {
+  margin-top: 0;
+  margin-bottom: 24px;
+}
+
+.form,
+.filter-card,
+article {
+  background: white;
+  padding: 32px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  margin-bottom: 32px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px 24px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #374151;
+}
+
+input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  font-size: 16px;
+  background: white;
+}
+
+input:focus {
+  outline: none;
+  border-color: #111827;
+  box-shadow: 0 0 0 3px rgba(17, 24, 39, 0.12);
+}
+
+button {
+  margin-top: 24px;
+  padding: 12px 18px;
+  border: none;
+  border-radius: 10px;
+  background: #111827;
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #374151;
+}
+
+.button-row {
+  display: flex;
+  gap: 12px;
+}
+
+.secondary-button {
+  background: #e5e7eb;
+  color: #111827;
+}
+
+.secondary-button:hover {
+  background: #d1d5db;
+}
+
+article h3 {
+  margin-top: 0;
+  font-size: 22px;
+}
+
+article p {
+  margin: 8px 0;
+}
+
+@media (max-width: 700px) {
+  main {
+    padding: 20px;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  h1 {
+    font-size: 32px;
+  }
+}
+
+.detail-card {
+  background: white;
+  padding: 32px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.detail-card a {
+  display: inline-block;
+  margin-bottom: 24px;
+  color: #111827;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.detail-card a:hover {
+  text-decoration: underline;
+}
+
+.detail-card h1 {
+  margin-bottom: 8px;
+}
+
+.detail-card h2 {
+  color: #6b7280;
+  font-size: 22px;
+  margin-bottom: 32px;
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px 24px;
+}
+
+@media (max-width: 700px) {
+  .detail-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.song-detail {
+  background: white;
+  padding: 36px;
+  border-radius: 20px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.06);
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 28px;
+  color: #374151;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+.song-detail-hero {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  align-items: flex-start;
+  padding-bottom: 32px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #6b7280;
+}
+
+.artist-name {
+  font-size: 22px;
+  color: #6b7280;
+  margin-top: -12px;
+}
+
+.bpm-badge {
+  min-width: 100px;
+  height: 100px;
+  border-radius: 999px;
+  background: #111827;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.bpm-badge span {
+  font-size: 28px;
+  font-weight: 800;
+}
+
+.bpm-badge small {
+  font-size: 12px;
+  letter-spacing: 0.08em;
+}
+
+.detail-section {
+  margin-top: 32px;
+}
+
+.detail-section h2 {
+  font-size: 20px;
+  margin-bottom: 16px;
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.detail-item {
+  padding: 18px;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  background: #f9fafb;
+}
+
+.detail-item span {
+  display: block;
+  font-size: 13px;
+  color: #6b7280;
+  margin-bottom: 8px;
+}
+
+.detail-item strong {
+  font-size: 18px;
+}
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.tag {
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: #f3f4f6;
+  font-weight: 700;
+}
+
+@media (max-width: 700px) {
+  .song-detail-hero {
+    flex-direction: column;
+  }
+
+  .detail-grid {
+    grid-template-columns: 1fr;
+  }
+}
