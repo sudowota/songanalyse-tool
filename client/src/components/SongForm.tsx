@@ -25,6 +25,7 @@ export default function SongForm({
     initialValues?.instruments?.join(", ") ?? ""
   );
   const [feeling, setFeeling] = useState(initialValues?.feeling ?? "");
+  const [magicMoment, setMagicMoment] = useState(initialValues?.magicMoment ?? "");
   const [associations, setAssociations] = useState(
     initialValues?.associations?.join(", ") ?? ""
   );
@@ -46,6 +47,7 @@ export default function SongForm({
         .map((item) => item.trim())
         .filter(Boolean),
       feeling: feeling.trim(),
+      magicMoment: magicMoment.trim(),
       associations: associations
         .split(",")
         .map((item) => item.trim())
@@ -120,6 +122,15 @@ export default function SongForm({
             value={associations}
             onChange={(e) => setAssociations(e.target.value)}
             placeholder="Nachtfahrt, Sommer, Wehmut"
+          />
+        </div>
+        <div className="form-group form-group-wide">
+          <label>Magic Moment</label>
+          <textarea
+            value={magicMoment}
+            onChange={(e) => setMagicMoment(e.target.value)}
+            rows={4}
+            placeholder="Was gefällt mir besonders? Wo sind die Magic Moments im Song?"
           />
         </div>
       </div>

@@ -1,4 +1,4 @@
-# Song Analysis Tool
+# Blue Notes
 
 Eine kleine Full-Stack-Webanwendung in TypeScript zur Analyse und Katalogisierung
 von Songs. Sie ist der **Ausgangspunkt** für das **AGG Musik Repertoire Tool**

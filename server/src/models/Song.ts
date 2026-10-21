@@ -44,6 +44,11 @@ normalizedProgression: {
       type: [String],
       default: [],
     },
+    magicMoment: {
+      type: String,
+      trim: true,
+      default: "",
+    },
     analysisStatus: {
       type: String,
       enum: ["offen", "analysiert"],

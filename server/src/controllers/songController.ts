@@ -11,6 +11,7 @@ type CreateSongRequestBody = {
   instruments?: string[];
   feeling?: string;
   associations?: string[];
+  magicMoment?: string;
 };
 
 export async function createSong(
@@ -27,6 +28,7 @@ export async function createSong(
       instruments,
       feeling,
       associations,
+      magicMoment,
     } = req.body;
 
     if (!title || typeof title !== "string" || title.trim() === "") {
@@ -50,6 +52,7 @@ const normalizedProgression =
       instruments: Array.isArray(instruments) ? instruments : [],
       feeling: typeof feeling === "string" ? feeling.trim() : "",
       associations: Array.isArray(associations) ? associations : [],
+      magicMoment: typeof magicMoment === "string" ? magicMoment.trim() : "",
     });
 
     res.status(201).json(song);
@@ -163,6 +166,7 @@ export async function updateSong(req: Request, res: Response): Promise<void> {
       instruments,
       feeling,
       associations,
+      magicMoment,
     } = req.body;
 
     const cleanedProgression =
@@ -183,6 +187,7 @@ export async function updateSong(req: Request, res: Response): Promise<void> {
         instruments: Array.isArray(instruments) ? instruments : [],
         feeling: typeof feeling === "string" ? feeling.trim() : "",
         associations: Array.isArray(associations) ? associations : [],
+        magicMoment: typeof magicMoment === "string" ? magicMoment.trim() : "",
       },
       { new: true, runValidators: true }
     );

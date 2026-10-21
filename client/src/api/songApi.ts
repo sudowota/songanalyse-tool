@@ -10,6 +10,7 @@ export type CreateSongData = {
   groove: string;
   instruments: string[];
   feeling: string;
+  magicMoment: string;
   associations: string[];
 };
 

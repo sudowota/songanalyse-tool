@@ -37,7 +37,7 @@ export default function SongDetailPage() {
 
       <header className="song-detail-hero">
         <div>
-          <p className="eyebrow">Songanalyse</p>
+          <p className="eyebrow">Blue Notes</p>
           <h1>{song.title}</h1>
           {song.artist && <p className="artist-name">{song.artist}</p>}
         </div>
@@ -72,6 +72,13 @@ export default function SongDetailPage() {
             <strong>{song.analysisStatus}</strong>
           </div>
         </div>
+      </div>
+
+      <div className="detail-section">
+        <h2>Magic Moments</h2>
+        <p className="magic-moment-text">
+          {song.magicMoment || "Noch keine Magic Moments notiert."}
+        </p>
       </div>
 
       <div className="detail-section">

@@ -7,6 +7,7 @@ export type Song = {
   groove: string;
   instruments: string[];
   feeling: string;
+  magicMoment: string;
   associations: string[];
   analysisStatus: "offen" | "analysiert";
   createdAt: string;
