@@ -8,8 +8,14 @@ export default function App() {
   return (
     <main>
       <nav>
-        <Link to="/">Songs</Link> |{" "}
-        <Link to="/new">Neuen Song anlegen</Link>
+        <Link className="brand" to="/">
+          Blue Notes
+        </Link>
+
+        <div>
+          <Link to="/">Songs</Link>{" "}
+          <Link to="/new">+ Neuer Song</Link>
+        </div>
       </nav>
 
       <Routes>

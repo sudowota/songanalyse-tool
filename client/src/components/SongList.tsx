@@ -8,44 +8,44 @@ type SongListProps = {
 
 export default function SongList({ songs, onDeleteSong }: SongListProps) {
   if (songs.length === 0) {
-    return <p>Keine Songs gefunden.</p>;
+    return <p className="empty-state">Keine Songs gefunden.</p>;
   }
 
   return (
-    <div>
+    <div className="song-list">
       <h2>Gespeicherte Songs</h2>
 
       {songs.map((song) => (
-        <article key={song._id}>
-          <h3>
-            {song.title} {song.artist && `– ${song.artist}`}
-          </h3>
+        <article className="song-card" key={song._id}>
+          <div className="cd" aria-hidden="true" />
 
-          <p>
-            <strong>Tempo:</strong> {song.tempo ?? "—"}
-          </p>
-          <p>
-            <strong>Progression:</strong> {song.progression || "—"}
-          </p>
-          <p>
-            <strong>Groove:</strong> {song.groove || "—"}
-          </p>
-          <p>
-            <strong>Feeling:</strong> {song.feeling || "—"}
-          </p>
+          <div className="song-card-body">
+            <h3>{song.title}</h3>
 
-          <div className="button-row">
-            <Link className="button-link" to={`/songs/${song._id}`}>
-              Details
-            </Link>
+            {song.artist && (
+              <span className="badge badge-artist">{song.artist}</span>
+            )}
 
-            <button
-              type="button"
-              className="danger-button"
-              onClick={() => onDeleteSong(song._id)}
-            >
-              Löschen
-            </button>
+            <div className="chip-row">
+              <span className="badge">{song.tempo ?? "—"} BPM</span>
+              <span className="badge">{song.progression || "—"}</span>
+              <span className="badge">{song.groove || "—"}</span>
+              <span className="badge">{song.feeling || "—"}</span>
+            </div>
+
+            <div className="button-row">
+              <Link className="button-link" to={`/songs/${song._id}`}>
+                Details
+              </Link>
+
+              <button
+                type="button"
+                className="danger-button"
+                onClick={() => onDeleteSong(song._id)}
+              >
+                Löschen
+              </button>
+            </div>
           </div>
         </article>
       ))}

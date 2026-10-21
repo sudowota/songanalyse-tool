@@ -21,7 +21,7 @@ export default function SongFilter({
   }
 
   return (
-    <section className="filter-card">
+    <section className="window-outer filter-card">
       <h2>Songs suchen</h2>
 
       <div className="form-grid">

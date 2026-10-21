@@ -1,278 +1,272 @@
+/* ==========================================================
+   BLUE NOTES — Studio-Design
+   Minimalistisch, transparentes Glas, Metall-Akzente.
+   Farben: CD-Orange als Akzent, Kassetten-Verlauf Pink -> Blau.
+   ========================================================== */
+
+:root {
+  --studio-light: #fbfbfa;
+  --studio-mid: #e7e7e4;
+  --studio-deep: #c9c9c4;
+  --graphite: #111113;
+  --cd-orange: #ff5b1f;
+  --tape-pink: #ff8ad8;
+  --tape-blue: #7cc4ff;
+  --glass-fill: rgba(255, 255, 255, 0.42);
+  --glass-edge: rgba(255, 255, 255, 0.85);
+  /* Platzhalter für spätere Stimmungs-Landschaften pro Mood */
+  --mood-tint: transparent;
+}
+
 * {
   box-sizing: border-box;
 }
 
 body {
   margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  background: #f4f4f5;
-  color: #111827;
+  min-height: 100vh;
+  font-family: "Space Grotesk", Arial, Helvetica, sans-serif;
+  color: var(--graphite);
+  background: radial-gradient(
+    ellipse at 50% 25%,
+    var(--studio-light) 0%,
+    var(--studio-mid) 48%,
+    var(--studio-deep) 100%
+  );
+  background-attachment: fixed;
+}
+
+/* Leeres Fotostudio: sanfter Boden-Verlauf (Hohlkehle) */
+body::before {
+  content: "";
+  position: fixed;
+  inset: auto 0 0 0;
+  height: 38vh;
+  z-index: -1;
+  background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.07));
+  pointer-events: none;
 }
 
 main {
-  max-width: 1000px;
+  max-width: 1080px;
   margin: 0 auto;
-  padding: 32px;
+  padding: 40px 32px 64px;
 }
+
+/* ---------- Navigation ---------- */
 
 nav {
   display: flex;
-  gap: 12px;
-  margin-bottom: 32px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 40px;
+  padding: 14px 22px;
+  border-radius: 999px;
+  background: var(--glass-fill);
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  border: 1px solid var(--glass-edge);
+  box-shadow: 0 16px 40px -18px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
 }
 
 nav a {
-  color: #111827;
+  color: var(--graphite);
   text-decoration: none;
+  font-size: 13px;
   font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
 }
 
 nav a:hover {
-  text-decoration: underline;
+  color: var(--cd-orange);
 }
 
+.brand {
+  font-family: "Michroma", sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.22em;
+  background: linear-gradient(90deg, #111113, #9a9aa0 50%, #111113);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ---------- Typografie ---------- */
+
 h1 {
-  font-size: 40px;
-  margin-bottom: 24px;
+  font-family: "Michroma", sans-serif;
+  font-weight: 400;
+  font-size: 30px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin: 0 0 28px;
 }
 
 h2 {
-  margin-top: 0;
-  margin-bottom: 24px;
+  font-family: "Michroma", sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin: 0 0 20px;
+  color: #3a3a40;
 }
 
-.form,
-.filter-card,
-article {
-  background: white;
-  padding: 32px;
-  border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-  margin-bottom: 32px;
-}
-
-.form-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px 24px;
-}
-
-.form-group {
-  display: flex;
-  flex-direction: column;
-}
-
-.form-group label {
-  font-size: 14px;
-  font-weight: 700;
-  margin-bottom: 8px;
-  color: #374151;
-}
-
-input {
-  width: 100%;
-  padding: 12px 14px;
-  border: 1px solid #d1d5db;
-  border-radius: 10px;
-  font-size: 16px;
-  background: white;
-}
-
-input:focus {
-  outline: none;
-  border-color: #111827;
-  box-shadow: 0 0 0 3px rgba(17, 24, 39, 0.12);
-}
-
-button {
-  margin-top: 24px;
-  padding: 12px 18px;
-  border: none;
-  border-radius: 10px;
-  background: #111827;
-  color: white;
-  font-weight: 700;
-  cursor: pointer;
-}
-
-button:hover {
-  background: #374151;
-}
-
-.button-row {
-  display: flex;
-  gap: 12px;
-}
-
-.secondary-button {
-  background: #e5e7eb;
-  color: #111827;
-}
-
-.secondary-button:hover {
-  background: #d1d5db;
-}
-
-article h3 {
-  margin-top: 0;
+h3 {
   font-size: 22px;
+  font-weight: 600;
+  margin: 0 0 8px;
 }
 
-article p {
-  margin: 8px 0;
-}
-
-@media (max-width: 700px) {
-  main {
-    padding: 20px;
-  }
-
-  .form-grid {
-    grid-template-columns: 1fr;
-  }
-
-  h1 {
-    font-size: 32px;
-  }
-}
-
-.detail-card {
-  background: white;
-  padding: 32px;
-  border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-}
-
-.detail-card a {
-  display: inline-block;
-  margin-bottom: 24px;
-  color: #111827;
-  font-weight: 700;
-  text-decoration: none;
-}
-
-.detail-card a:hover {
-  text-decoration: underline;
-}
-
-.detail-card h1 {
-  margin-bottom: 8px;
-}
-
-.detail-card h2 {
-  color: #6b7280;
-  font-size: 22px;
-  margin-bottom: 32px;
-}
-
-.detail-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px 24px;
-}
-
-@media (max-width: 700px) {
-  .detail-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-.song-detail {
-  background: white;
-  padding: 36px;
-  border-radius: 20px;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.06);
-}
-
-.back-link {
-  display: inline-block;
-  margin-bottom: 28px;
-  color: #374151;
-  text-decoration: none;
-  font-weight: 700;
-}
-
-.back-link:hover {
-  text-decoration: underline;
-}
-
-.song-detail-hero {
-  display: flex;
-  justify-content: space-between;
-  gap: 24px;
-  align-items: flex-start;
-  padding-bottom: 32px;
-  border-bottom: 1px solid #e5e7eb;
+p {
+  line-height: 1.55;
 }
 
 .eyebrow {
-  margin: 0 0 8px;
-  font-size: 13px;
-  font-weight: 800;
+  margin: 0 0 6px;
+  font-family: "Michroma", sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: #6b7280;
+  color: #6b6b72;
 }
 
-.artist-name {
-  font-size: 22px;
-  color: #6b7280;
-  margin-top: -12px;
+/* ---------- Glas & Fenster-im-Fenster ---------- */
+
+/* Äußeres Fenster: transparentes Glas mit Metall-Kante */
+.window-outer {
+  position: relative;
+  padding: 26px;
+  margin-bottom: 32px;
+  border-radius: 30px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.6),
+    rgba(255, 255, 255, 0.18) 60%,
+    rgba(255, 255, 255, 0.35)
+  );
+  backdrop-filter: blur(22px) saturate(150%);
+  -webkit-backdrop-filter: blur(22px) saturate(150%);
+  border: 1px solid var(--glass-edge);
+  box-shadow: 0 34px 70px -28px rgba(0, 0, 0, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.05);
 }
 
-.bpm-badge {
-  min-width: 100px;
-  height: 100px;
-  border-radius: 999px;
-  background: #111827;
-  color: white;
-  display: flex;
-  flex-direction: column;
+/* Inneres Fenster: kleineres, helleres Glas */
+.window-inner {
+  padding: 32px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.38);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 1),
+    0 18px 36px -22px rgba(0, 0, 0, 0.25);
+}
+
+/* ---------- CD-Icons ---------- */
+
+.cd {
+  --cd-size: 84px;
+  position: relative;
+  width: var(--cd-size);
+  height: var(--cd-size);
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 30deg,
+    #f4f4f6,
+    #bfc3c9,
+    var(--tape-pink),
+    var(--tape-blue),
+    #fdfdfd,
+    var(--cd-orange),
+    #f4f4f6,
+    #aeb3ba,
+    var(--tape-blue),
+    #f4f4f6,
+    var(--tape-pink),
+    #d9dde3,
+    #f4f4f6
+  );
+  box-shadow: 0 14px 26px -12px rgba(0, 0, 0, 0.35),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.8);
+}
+
+/* Regenbogen-Schimmer der Oberfläche */
+.cd::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    transparent 34%,
+    rgba(255, 255, 255, 0.35) 36%,
+    transparent 46%,
+    rgba(255, 255, 255, 0.22) 50%,
+    transparent 62%
+  );
+}
+
+/* Mittelloch in der Farbe des Studio-Hintergrunds */
+.cd::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: calc(var(--cd-size) * 0.3);
+  height: calc(var(--cd-size) * 0.3);
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: var(--studio-mid);
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.12),
+    0 0 0 3px rgba(255, 255, 255, 0.6);
+  z-index: 1;
+}
+
+.cd-large {
+  --cd-size: 132px;
+}
+
+/* ---------- Badges & Tags ---------- */
+
+.badge,
+.tag {
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
-}
-
-.bpm-badge span {
-  font-size: 28px;
-  font-weight: 800;
-}
-
-.bpm-badge small {
-  font-size: 12px;
-  letter-spacing: 0.08em;
-}
-
-.detail-section {
-  margin-top: 32px;
-}
-
-.detail-section h2 {
-  font-size: 20px;
-  margin-bottom: 16px;
-}
-
-.detail-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
-}
-
-.detail-item {
-  padding: 18px;
-  border: 1px solid #e5e7eb;
-  border-radius: 14px;
-  background: #f9fafb;
-}
-
-.detail-item span {
-  display: block;
+  gap: 8px;
+  padding: 7px 13px;
+  border-radius: 999px;
   font-size: 13px;
-  color: #6b7280;
-  margin-bottom: 8px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 6px 14px -8px rgba(0, 0, 0, 0.25);
 }
 
-.detail-item strong {
-  font-size: 18px;
+/* Artist-Badge: kleiner Kassetten-Verlauf als Punkt */
+.badge-artist::before {
+  content: "";
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--tape-pink), var(--tape-blue));
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.8);
+}
+
+.chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 12px 0 0;
 }
 
 .tag-list {
@@ -281,39 +275,350 @@ article p {
   gap: 10px;
 }
 
-.tag {
-  padding: 8px 12px;
-  border-radius: 999px;
-  background: #f3f4f6;
-  font-weight: 700;
+/* ---------- Formulare ---------- */
+
+.form {
+  background: none;
+  padding: 0;
+  margin: 0;
+  box-shadow: none;
+  border-radius: 0;
 }
 
-@media (max-width: 700px) {
-  .song-detail-hero {
-    flex-direction: column;
-  }
-
-  .detail-grid {
-    grid-template-columns: 1fr;
-  }
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px 26px;
 }
-/* Blue Notes: Magic Moment */
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  color: #55555c;
+}
+
 .form-group-wide {
   grid-column: 1 / -1;
 }
 
-.form-group textarea {
+input,
+textarea {
   width: 100%;
-  resize: vertical;
+  padding: 13px 15px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 0.55);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.06);
   font: inherit;
-  padding: 0.6rem 0.8rem;
-  border-radius: 8px;
-  border: 1px solid currentColor;
+  font-size: 16px;
+  color: var(--graphite);
+}
+
+textarea {
+  resize: vertical;
+  line-height: 1.5;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--cd-orange);
+  box-shadow: 0 0 0 3px rgba(255, 91, 31, 0.18);
+}
+
+.form button[type="submit"] {
+  margin-top: 28px;
+}
+
+/* ---------- Buttons: metallisch-graphit ---------- */
+
+button,
+.button-link {
+  font-family: "Space Grotesk", sans-serif;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0;
+  padding: 12px 22px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: linear-gradient(180deg, #34343a, #0c0c0e);
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.28),
+    0 12px 22px -10px rgba(0, 0, 0, 0.45);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+button:hover,
+.button-link:hover {
+  transform: translateY(-1px);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.28),
+    0 0 0 4px rgba(255, 91, 31, 0.22),
+    0 14px 26px -10px rgba(0, 0, 0, 0.45);
+}
+
+button:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
+.button-row button {
+  margin-top: 0;
+}
+
+.secondary-button {
+  background: rgba(255, 255, 255, 0.5);
+  color: var(--graphite);
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.danger-button {
   background: transparent;
-  color: inherit;
+  color: var(--graphite);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  box-shadow: none;
+}
+
+.danger-button:hover {
+  color: #ffffff;
+  background: var(--cd-orange);
+  border-color: var(--cd-orange);
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 22px;
+  color: #3a3a40;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.back-link:hover {
+  color: var(--cd-orange);
+}
+
+/* ---------- Song-Liste ---------- */
+
+.song-list {
+  display: grid;
+  gap: 20px;
+  margin-bottom: 32px;
+}
+
+.song-card {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 22px 26px;
+  border-radius: 24px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.6),
+    rgba(255, 255, 255, 0.22)
+  );
+  backdrop-filter: blur(18px) saturate(150%);
+  -webkit-backdrop-filter: blur(18px) saturate(150%);
+  border: 1px solid var(--glass-edge);
+  box-shadow: 0 24px 48px -28px rgba(0, 0, 0, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.song-card-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.song-card-body .button-row {
+  margin-top: 16px;
+}
+
+.song-card-body h3 {
+  font-size: 20px;
+}
+
+.filter-card {
+  margin-bottom: 32px;
+}
+
+.empty-state {
+  padding: 24px;
+  border-radius: 20px;
+  background: var(--glass-fill);
+  border: 1px solid var(--glass-edge);
+}
+
+/* ---------- Detailseite ---------- */
+
+.song-detail {
+  padding: 26px;
+}
+
+.song-detail .back-link {
+  margin-right: 18px;
+}
+
+.song-detail-hero {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  align-items: center;
+  padding-bottom: 28px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.song-hero-main {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.song-hero-main h1 {
+  margin-bottom: 12px;
+  font-size: 26px;
+}
+
+.bpm-badge {
+  min-width: 104px;
+  height: 104px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.3));
+  border: 2px solid var(--cd-orange);
+  box-shadow: 0 0 0 6px rgba(255, 91, 31, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 1);
+}
+
+.bpm-badge span {
+  font-family: "Michroma", sans-serif;
+  font-size: 24px;
+}
+
+.bpm-badge small {
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  color: #6b6b72;
+}
+
+.detail-section {
+  margin-top: 30px;
+}
+
+.detail-section h2 {
+  margin-bottom: 14px;
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+.detail-item {
+  padding: 18px 20px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  box-shadow: 0 10px 20px -16px rgba(0, 0, 0, 0.3);
+}
+
+.detail-item span {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #6b6b72;
+  margin-bottom: 8px;
+}
+
+.detail-item strong {
+  font-size: 18px;
+  font-weight: 600;
 }
 
 .magic-moment-text {
   white-space: pre-line;
-  line-height: 1.6;
+  line-height: 1.65;
+  padding: 20px 22px;
+  border-radius: 16px;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 138, 216, 0.14),
+    rgba(124, 196, 255, 0.14)
+  );
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  margin: 0;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 700px) {
+  main {
+    padding: 20px 16px 48px;
+  }
+
+  nav {
+    flex-wrap: wrap;
+    border-radius: 24px;
+  }
+
+  .form-grid,
+  .detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  h1 {
+    font-size: 22px;
+  }
+
+  .window-outer {
+    padding: 14px;
+    border-radius: 24px;
+  }
+
+  .window-inner {
+    padding: 20px;
+  }
+
+  .song-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .song-detail-hero {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .song-hero-main {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
