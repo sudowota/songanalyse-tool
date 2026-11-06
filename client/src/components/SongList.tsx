@@ -4,9 +4,10 @@ import type { Song } from "../types/song";
 type SongListProps = {
   songs: Song[];
   onDeleteSong: (id: string) => Promise<void>;
+  darfLoeschen?: boolean;
 };
 
-export default function SongList({ songs, onDeleteSong }: SongListProps) {
+export default function SongList({ songs, onDeleteSong, darfLoeschen = false }: SongListProps) {
   if (songs.length === 0) {
     return <p className="empty-state">Keine Songs gefunden.</p>;
   }
@@ -37,6 +38,7 @@ export default function SongList({ songs, onDeleteSong }: SongListProps) {
                 Details
               </Link>
 
+{darfLoeschen && (
               <button
                 type="button"
                 className="danger-button"
@@ -44,6 +46,7 @@ export default function SongList({ songs, onDeleteSong }: SongListProps) {
               >
                 Löschen
               </button>
+            )}
             </div>
           </div>
         </article>

@@ -6,20 +6,15 @@ import {
   getSongs,
   updateSong,
 } from "../controllers/songController";
+import { requireAuth, requireRole } from "../middleware/auth";
 
 const router = Router();
 
-router.get("/", getSongs);
-router.get("/:id", getSongById);
-router.post("/", createSong);
-router.delete("/:id", deleteSong);
-router.put("/:id", updateSong);
-
-router.get("/", getSongs);
-router.get("/:id", getSongById);
-router.post("/", createSong);
-router.put("/:id", updateSong);
-router.delete("/:id", deleteSong);
+// Lesen: alle angemeldeten Rollen. Schreiben: nur Lehrer und Admins.
+router.get("/", requireAuth, getSongs);
+router.get("/:id", requireAuth, getSongById);
+router.post("/", requireAuth, requireRole("admin", "teacher"), createSong);
+router.put("/:id", requireAuth, requireRole("admin", "teacher"), updateSong);
+router.delete("/:id", requireAuth, requireRole("admin", "teacher"), deleteSong);
 
 export default router;
-

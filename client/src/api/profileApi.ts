@@ -1,6 +1,7 @@
-// AAA: Badge-Bild laden und speichern.
-const PROFILE_URL = (import.meta.env.VITE_API_BASE_URL ?? "http://127.0.0.1:5001/api/songs")
-  .replace(/\/api\/songs$/, "/api/profile");
+import { API_ROOT, authHeaders } from "./authApi";
+
+// AAA: Badge-Bild laden (öffentlich) und speichern (nur Lehrer und Admins).
+const PROFILE_URL = `${API_ROOT}/profile`;
 
 export async function getProfile(): Promise<string> {
   const response = await fetch(PROFILE_URL);
@@ -13,13 +14,10 @@ export async function getProfile(): Promise<string> {
   return daten.bildDataUrl ?? "";
 }
 
-export async function saveProfile(bildDataUrl: string, adminKey: string): Promise<void> {
+export async function saveProfile(bildDataUrl: string): Promise<void> {
   const response = await fetch(PROFILE_URL, {
     method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-      "x-admin-key": adminKey,
-    },
+    headers: { "Content-Type": "application/json", ...authHeaders() },
     body: JSON.stringify({ bildDataUrl }),
   });
 

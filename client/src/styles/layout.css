@@ -173,3 +173,34 @@ nav a:hover {
   height: 40px;
   width: auto;
 }
+
+/* ---------- Navigation: zwei Ebenen (Bereiche und Unterseiten) ---------- */
+
+.main-nav {
+  margin-bottom: 0;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.main-nav .brand {
+  font-weight: 700;
+}
+
+.sub-nav {
+  margin-top: 0;
+  margin-bottom: 24px;
+  border-top: 0;
+  padding-top: 0;
+  gap: 16px;
+  justify-content: flex-start;
+}
+
+nav a.active {
+  background: var(--charcoal);
+  color: var(--offwhite);
+}

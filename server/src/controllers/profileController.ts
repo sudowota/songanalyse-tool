@@ -22,20 +22,6 @@ export async function getProfile(_req: Request, res: Response): Promise<void> {
 // AAA: Speichert das Badge-Bild. Nur mit gültigem Admin-Schlüssel.
 export async function updateProfile(req: Request, res: Response): Promise<void> {
   try {
-    const erwarteterSchluessel = process.env.ADMIN_KEY;
-
-    // Schritt 1: Ist ein Admin-Schlüssel auf dem Server gesetzt?
-    if (!erwarteterSchluessel) {
-      res.status(500).json({ message: "ADMIN_KEY ist auf dem Server nicht gesetzt." });
-      return;
-    }
-
-    // Schritt 2: Stimmt der mitgeschickte Schlüssel?
-    if (req.header("x-admin-key") !== erwarteterSchluessel) {
-      res.status(401).json({ message: "Admin-Schlüssel falsch." });
-      return;
-    }
-
     const { bildDataUrl } = req.body;
 
     // Schritt 3: Nur PNG oder JPEG als Data-URL, Größe begrenzen

@@ -1,18 +1,20 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getProfile, saveProfile } from "../api/profileApi";
+import { useAuth } from "../context/AuthContext";
 import { pixelateImage } from "../utils/pixelate";
 import ArtistBadge from "../components/ArtistBadge";
 
 // AAA: Profilseite. Oben das große Badge, darunter die Einstellungen zum Hochladen.
 export default function ProfilePage() {
+  const { nutzer } = useAuth();
+  const darfBearbeiten = nutzer?.role === "admin" || nutzer?.role === "teacher";
   const [gespeichertesBild, setGespeichertesBild] = useState("");
 
   const [datei, setDatei] = useState<File | null>(null);
   const [groesse, setGroesse] = useState(32);
   const [stufen, setStufen] = useState(4);
   const [vorschau, setVorschau] = useState("");
-  const [adminKey, setAdminKey] = useState("");
   const [meldung, setMeldung] = useState("");
 
   // Schritt 0: Aktuelles Badge-Bild laden
@@ -37,7 +39,7 @@ export default function ProfilePage() {
 
     try {
       setMeldung("speichert...");
-      await saveProfile(vorschau, adminKey);
+      await saveProfile(vorschau);
       setGespeichertesBild(vorschau);
       setMeldung("gespeichert. das badge zeigt jetzt das neue bild.");
     } catch (error) {
@@ -60,6 +62,7 @@ export default function ProfilePage() {
         />
       </div>
 
+      {darfBearbeiten && (
       <section className="window-outer">
       <h2>badge-einstellungen</h2>
 
@@ -108,15 +111,6 @@ export default function ProfilePage() {
             <p>noch kein bild gewählt.</p>
           )}
         </div>
-
-        <div className="form-group form-group-wide">
-          <label>admin-schlüssel</label>
-          <input
-            type="password"
-            value={adminKey}
-            onChange={(e) => setAdminKey(e.target.value)}
-          />
-        </div>
       </div>
 
       <div className="button-row">
@@ -127,6 +121,7 @@ export default function ProfilePage() {
 
       {meldung && <p className="form-error">{meldung}</p>}
       </section>
+      )}
     </>
   );
 }

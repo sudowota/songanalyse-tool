@@ -3,9 +3,12 @@ import { Link, useParams } from "react-router-dom";
 import { getSongById } from "../api/songApi";
 import type { Song } from "../types/song";
 import LyricsView from "../components/LyricsView";
+import { useAuth } from "../context/AuthContext";
 
 export default function SongDetailPage() {
   const { id } = useParams<{ id: string }>();
+  const { nutzer } = useAuth();
+  const darfBearbeiten = nutzer?.role === "admin" || nutzer?.role === "teacher";
   const [song, setSong] = useState<Song | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [zeigeLyrics, setZeigeLyrics] = useState(false);
@@ -32,10 +35,9 @@ export default function SongDetailPage() {
       <Link className="back-link" to="/">
         ← Zurück zur Liste
       </Link>
-
-      <Link className="button-link" to={`/songs/${song._id}/edit`}>
-        Bearbeiten
-      </Link>
+      {darfBearbeiten && (<Link className="button-link" to={`/songs/${song._id}/edit`}>
+          Bearbeiten
+        </Link>)}
 
         <header className="song-detail-hero">
           <div className="song-hero-main">

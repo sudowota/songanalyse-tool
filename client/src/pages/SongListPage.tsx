@@ -3,8 +3,11 @@ import { deleteSong, getSongs, type SongFilters } from "../api/songApi";
 import SongList from "../components/SongList";
 import SongFilter from "../components/SongFilter";
 import type { Song } from "../types/song";
+import { useAuth } from "../context/AuthContext";
 
 export default function SongListPage() {
+  const { nutzer } = useAuth();
+  const darfLoeschen = nutzer?.role === "admin" || nutzer?.role === "teacher";
   const [songs, setSongs] = useState<Song[]>([]);
   const [filters, setFilters] = useState<SongFilters>({});
   const [isLoading, setIsLoading] = useState(true);
@@ -49,7 +52,7 @@ async function handleDeleteSong(id: string) {
         onReset={handleReset}
       />
 
-      {isLoading ? <p>Lade Songs...</p> : <SongList songs={songs} onDeleteSong={handleDeleteSong} />}
+      {isLoading ? <p>Lade Songs...</p> : <SongList songs={songs} onDeleteSong={handleDeleteSong} darfLoeschen={darfLoeschen} />}
       
     </>
   );
