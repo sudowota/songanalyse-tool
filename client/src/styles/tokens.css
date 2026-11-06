@@ -11,4 +11,7 @@
   --fs-meta: 12px;
   --fs-body: 14px;
   --fs-title: 28px;
+  /* Badge-Schriften: Titel und Text getrennt, leicht austauschbar */
+  --font-badge-title: "Silkscreen", monospace;
+  --font-badge-text: "VT323", monospace;
 }

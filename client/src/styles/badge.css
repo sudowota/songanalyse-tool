@@ -1,0 +1,163 @@
+/* ==========================================================
+   ArtistBadge: Retro-Ausweis im Pixel-Stil
+   Farben und Größen stehen oben, damit du sie schnell änderst.
+   ========================================================== */
+
+:root {
+  --badge-w: 260px;
+  --badge-ink: #1b1b1f;
+  --badge-cream: #f1ead8;
+  --badge-metal: #9a9ea6;
+  --badge-metal-hi: #d9dce0;
+  --badge-metal-lo: #5d6168;
+  --badge-dash: #8b8577;
+}
+
+.artist-badge {
+  width: var(--badge-w);
+  margin: 0 auto;
+  font-family: var(--font-badge-text);
+  color: var(--badge-ink);
+  image-rendering: pixelated;
+}
+
+/* Metall-Clip oben */
+.artist-badge-clip {
+  width: 48px;
+  height: 26px;
+  margin: 0 auto -4px;
+  position: relative;
+  z-index: 1;
+  background: var(--badge-metal);
+  border: 4px solid var(--badge-ink);
+  border-bottom: 0;
+  box-shadow: inset 4px 4px 0 var(--badge-metal-hi);
+}
+
+/* Metallrahmen mit abgeschnittenen Pixel-Ecken */
+.artist-badge-frame {
+  padding: 8px;
+  background: var(--badge-metal);
+  border: 4px solid var(--badge-ink);
+  clip-path: polygon(
+    8px 0, calc(100% - 8px) 0, 100% 8px,
+    100% calc(100% - 8px), calc(100% - 8px) 100%,
+    8px 100%, 0 calc(100% - 8px), 0 8px
+  );
+  box-shadow: inset 4px 4px 0 var(--badge-metal-hi),
+    inset -4px -4px 0 var(--badge-metal-lo);
+}
+
+/* Cremefarbene Karte */
+.artist-badge-inner {
+  background: var(--badge-cream);
+  border: 4px solid var(--badge-ink);
+  padding: 12px;
+}
+
+.artist-badge-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.artist-badge-title {
+  margin: 0;
+  font-family: var(--font-badge-title);
+  font-size: 20px;
+  line-height: 1.1;
+  letter-spacing: 0.02em;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.artist-badge-id {
+  font-size: 16px;
+  white-space: nowrap;
+}
+
+.artist-badge-sub {
+  margin: 8px 0 0;
+  padding-bottom: 6px;
+  font-size: 18px;
+  letter-spacing: 0.04em;
+  border-bottom: 2px dashed var(--badge-dash);
+}
+
+/* Profilbild: quadratisch, austauschbar, pixelig dargestellt */
+.artist-badge-photo {
+  aspect-ratio: 1 / 1;
+  margin: 12px 0;
+  border: 3px solid var(--badge-ink);
+  background: var(--badge-cream);
+}
+
+.artist-badge-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  image-rendering: pixelated;
+}
+
+/* Informationszeilen mit gestrichelten Trennlinien */
+.artist-badge-rows {
+  margin: 0;
+}
+
+.artist-badge-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 4px 0;
+  border-bottom: 2px dashed var(--badge-dash);
+}
+
+.artist-badge-row dt {
+  flex: 0 0 84px;
+  font-family: var(--font-badge-title);
+  font-size: 9px;
+  letter-spacing: 0.04em;
+}
+
+.artist-badge-row dd {
+  margin: 0;
+  font-size: 22px;
+  line-height: 1.1;
+}
+
+.artist-badge-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 8px;
+  margin-top: 8px;
+  font-size: 14px;
+  line-height: 1.1;
+}
+
+.artist-badge-foot strong {
+  font-family: var(--font-badge-title);
+  font-size: 12px;
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+/* Profil-Zeile: Badge links, Filter rechts */
+.profile-row {
+  display: grid;
+  grid-template-columns: var(--badge-w) 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+@media (max-width: 700px) {
+  :root {
+    --badge-w: 220px;
+  }
+
+  .profile-row {
+    grid-template-columns: 1fr;
+  }
+}
