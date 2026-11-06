@@ -28,9 +28,13 @@ export default function App() {
       </header>
 
       <nav className="main-nav">
-        <div className="nav-links">
+        <div className="nav-links nav-links-links">
           <Link className="brand" to="/">STYLES</Link>
+          <Link className="brand" to="/vx">VX</Link>
+          {!nutzer && <NavLink to="/login">anmelden</NavLink>}
+        </div>
 
+        <div className="nav-links nav-links-rechts">
           {nutzer && !imVx && (
             <>
               <NavLink to="/">[01] songs</NavLink>
@@ -38,16 +42,12 @@ export default function App() {
             </>
           )}
 
-          <Link className="brand" to="/vx">VX</Link>
-
           {nutzer && imVx && (
             <>
               <NavLink to="/vx/exercises">[01] exercises</NavLink>
               <NavLink to="/vx/level">[02] level</NavLink>
             </>
           )}
-
-          {!nutzer && <NavLink to="/login">anmelden</NavLink>}
         </div>
       </nav>
 
