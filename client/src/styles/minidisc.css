@@ -39,7 +39,7 @@
   }
 }
 
-/* Gehäuse: Foto der roten MiniDisc, füllt die ganze Fläche */
+/* Gehäuse: freigestelltes Bild der MiniDisc, Breite füllt die Spalte */
 .minidisc {
   width: 100%;
   max-width: 340px;
@@ -55,8 +55,6 @@
   display: block;
   width: 100%;
   height: auto;
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
 }
 
 /* Technische Labels direkt unter dem Gehäuse */
