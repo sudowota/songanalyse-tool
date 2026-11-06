@@ -159,12 +159,16 @@ nav a:hover {
 
 /* ---------- Logo über der Navigation ---------- */
 
-.top-logo {
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 40px;
   padding-bottom: 4px;
   margin-bottom: 4px;
 }
 
-.top-logo img {
+.top-logo {
   display: block;
   height: 40px;
   width: auto;

@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { deleteSong, getSongs, type SongFilters } from "../api/songApi";
 import SongList from "../components/SongList";
 import SongFilter from "../components/SongFilter";
-import ArtistBadge from "../components/ArtistBadge";
 import type { Song } from "../types/song";
 
 export default function SongListPage() {
@@ -43,16 +42,12 @@ async function handleDeleteSong(id: string) {
     <>
       <h1>Alle Songs</h1>
 
-      <div className="profile-row">
-        <ArtistBadge />
-
-        <SongFilter
-          filters={filters}
-          onChange={setFilters}
-          onSearch={handleSearch}
-          onReset={handleReset}
-        />
-      </div>
+      <SongFilter
+        filters={filters}
+        onChange={setFilters}
+        onSearch={handleSearch}
+        onReset={handleReset}
+      />
 
       {isLoading ? <p>Lade Songs...</p> : <SongList songs={songs} onDeleteSong={handleDeleteSong} />}
       

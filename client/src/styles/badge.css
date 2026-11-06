@@ -144,20 +144,61 @@
   white-space: nowrap;
 }
 
-/* Profil-Zeile: Badge links, Filter rechts */
-.profile-row {
-  display: grid;
-  grid-template-columns: var(--badge-w) 1fr;
-  gap: 24px;
-  align-items: start;
-}
 
 @media (max-width: 700px) {
   :root {
     --badge-w: 220px;
   }
 
-  .profile-row {
-    grid-template-columns: 1fr;
-  }
+}
+
+/* ---------- Kleines Badge in der Kopfzeile (Höhe wie das Logo) ---------- */
+
+.mini-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 40px;
+  margin: 0;
+  padding: 0 10px 0 4px;
+  background: var(--badge-cream);
+  color: var(--badge-ink);
+  border: 2px solid var(--badge-ink);
+  font-family: var(--font-badge-text);
+  font-size: 20px;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.mini-badge img {
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--badge-ink);
+  image-rendering: pixelated;
+}
+
+/* ---------- Vergrößerte Karte im Overlay ---------- */
+
+.badge-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  overflow-y: auto;
+  background: rgba(46, 46, 46, 0.6);
+}
+
+.badge-overlay-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  width: min(320px, 100%);
+}
+
+.badge-overlay .artist-badge {
+  width: 100%;
 }

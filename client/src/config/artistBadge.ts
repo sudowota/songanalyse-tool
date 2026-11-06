@@ -8,7 +8,7 @@ export const artistBadgeConfig = {
   bildAlt: "Profilbild",
   name: "MOSES",
   beruf: "VOCAL COACH",
-  klasse: "ARTIST",
+  stil: "GOSPEL & POP",
   level: "LV 07 · GOSPEL & POP",
   fusszeile: "HOLDER OF THIS CARD IS A VOCAL COACH",
   easterEgg: "45-12H",

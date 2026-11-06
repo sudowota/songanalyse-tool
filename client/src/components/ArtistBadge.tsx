@@ -40,8 +40,8 @@ export default function ArtistBadge({ config }: ArtistBadgeProps) {
               <dd>{daten.beruf}</dd>
             </div>
             <div className="artist-badge-row">
-              <dt>CLASS</dt>
-              <dd>{daten.klasse}</dd>
+              <dt>STYLE</dt>
+              <dd>{daten.stil}</dd>
             </div>
             <div className="artist-badge-row">
               <dt>LEVEL</dt>
