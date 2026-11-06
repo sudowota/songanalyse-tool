@@ -67,7 +67,7 @@ export default function SongMiniDisc({ daten }: SongMiniDiscProps) {
   return (
     <div className="minidisc">
       <div className="minidisc-shell">
-        <img className="minidisc-bild" src="/minidisc/md.svg" alt="" />
+        <img className="minidisc-bild" src="/minidisc/md-photo.jpg" alt="" />
       </div>
 
       <div className="minidisc-info">
