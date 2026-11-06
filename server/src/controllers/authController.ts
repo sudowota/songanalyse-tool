@@ -65,3 +65,42 @@ export async function me(req: Request, res: Response): Promise<void> {
     res.status(500).json({ message: "Interner Serverfehler." });
   }
 }
+
+// AAA: Eigenes Passwort ändern. Altes Passwort muss stimmen.
+export async function changePassword(req: Request, res: Response): Promise<void> {
+  try {
+    const angemeldet = (req as AuthRequest).user;
+    const { altesPasswort, neuesPasswort } = req.body;
+
+    // Schritt 1: Eingaben prüfen
+    if (typeof altesPasswort !== "string" || typeof neuesPasswort !== "string") {
+      res.status(400).json({ message: "Bitte beide Passwörter angeben." });
+      return;
+    }
+    if (neuesPasswort.length < 8) {
+      res.status(400).json({ message: "Das neue Passwort muss mindestens 8 Zeichen haben." });
+      return;
+    }
+
+    // Schritt 2: Altes Passwort prüfen
+    const nutzer = angemeldet ? await UserModel.findById(angemeldet.id) : null;
+    if (!nutzer) {
+      res.status(401).json({ message: "Bitte anmelden." });
+      return;
+    }
+    const passt = await bcrypt.compare(altesPasswort, nutzer.passwordHash);
+    if (!passt) {
+      res.status(400).json({ message: "Das alte Passwort ist falsch." });
+      return;
+    }
+
+    // Schritt 3: Neues Passwort speichern
+    nutzer.passwordHash = await bcrypt.hash(neuesPasswort, 10);
+    await nutzer.save();
+
+    res.status(200).json({ message: "Passwort geändert." });
+  } catch (error) {
+    console.error("Fehler beim Ändern des Passworts:", error);
+    res.status(500).json({ message: "Interner Serverfehler." });
+  }
+}

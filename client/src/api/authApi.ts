@@ -64,3 +64,20 @@ export async function fetchMe(): Promise<Nutzer | null> {
 
   return response.json();
 }
+
+// AAA: Eigenes Passwort ändern. Der Server prüft das alte Passwort.
+export async function changePassword(altesPasswort: string, neuesPasswort: string): Promise<string> {
+  const response = await fetch(`${API_ROOT}/auth/password`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json", ...authHeaders() },
+    body: JSON.stringify({ altesPasswort, neuesPasswort }),
+  });
+
+  const daten = await response.json().catch(() => ({}));
+
+  if (!response.ok) {
+    throw new Error(daten.message ?? "Passwort konnte nicht geändert werden.");
+  }
+
+  return daten.message ?? "Passwort geändert.";
+}

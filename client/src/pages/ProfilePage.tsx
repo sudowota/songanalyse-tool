@@ -4,6 +4,7 @@ import { getProfile, saveProfile } from "../api/profileApi";
 import { useAuth } from "../context/AuthContext";
 import { pixelateImage } from "../utils/pixelate";
 import ArtistBadge from "../components/ArtistBadge";
+import ChangePasswordForm from "../components/ChangePasswordForm";
 
 // AAA: Profilseite. Oben das große Badge, darunter die Einstellungen zum Hochladen.
 export default function ProfilePage() {
@@ -61,6 +62,8 @@ export default function ProfilePage() {
           config={gespeichertesBild ? { bildSrc: gespeichertesBild } : undefined}
         />
       </div>
+
+      <ChangePasswordForm />
 
       {darfBearbeiten && (
       <section className="window-outer">
