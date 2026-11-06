@@ -1,0 +1,102 @@
+/* Buttons: binär, Hover invertiert, keine Übergänge */
+button,
+.button-link {
+  font-family: var(--font-mono);
+  font-size: var(--fs-meta);
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  display: inline-block;
+  margin: 0;
+  padding: 8px 14px;
+  border: 1px solid var(--rule);
+  background: transparent;
+  color: var(--charcoal);
+  text-decoration: none;
+  cursor: pointer;
+  transition: none;
+}
+
+button:hover,
+.button-link:hover {
+  background: var(--charcoal);
+  color: var(--offwhite);
+}
+
+button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.secondary-button {
+  background: var(--sand);
+}
+
+.danger-button:hover {
+  background: var(--charcoal);
+}
+
+.form button[type="submit"] {
+  margin-top: 16px;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 16px;
+  font-size: var(--fs-meta);
+  letter-spacing: 0.1em;
+  color: var(--charcoal);
+  text-decoration: none;
+}
+
+.back-link:hover {
+  background: var(--charcoal);
+  color: var(--offwhite);
+}
+
+/* Badges & Tags: Linien statt Kapseln */
+.badge,
+.tag {
+  display: inline-block;
+  padding: 4px 8px;
+  border: 1px solid var(--rule);
+  font-size: var(--fs-meta);
+  letter-spacing: 0.1em;
+}
+
+.badge-artist {
+  background: var(--charcoal);
+  color: var(--offwhite);
+}
+
+.eyebrow {
+  margin: 0;
+  font-size: var(--fs-meta);
+  letter-spacing: 0.1em;
+  color: var(--mud);
+}
+
+/* Kennzahl: BPM als Zahl, keine Kreise */
+.bpm-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  min-width: 96px;
+}
+
+.bpm-badge span {
+  font-size: var(--fs-title);
+  font-weight: 700;
+}
+
+.bpm-badge small {
+  font-size: var(--fs-meta);
+  letter-spacing: 0.1em;
+  color: var(--mud);
+}

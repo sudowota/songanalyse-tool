@@ -1,0 +1,154 @@
+/* Navigation als Befehlszeile */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  padding: 12px 0;
+  margin-bottom: 32px;
+  font-size: var(--fs-meta);
+  letter-spacing: 0.1em;
+}
+
+nav a {
+  color: var(--charcoal);
+  text-decoration: none;
+  padding: 2px 6px;
+}
+
+nav a:hover {
+  background: var(--charcoal);
+  color: var(--offwhite);
+}
+
+.brand {
+  font-family: var(--font-pixel);
+  font-weight: 700;
+}
+
+/* Rahmen: nur hauchdünne Linien, keine Schatten */
+.window-outer,
+.window-inner,
+.filter-card,
+.form {
+  border: 1px solid var(--rule);
+  background: transparent;
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label {
+  font-size: var(--fs-meta);
+  letter-spacing: 0.1em;
+}
+
+.form-group-wide {
+  grid-column: 1 / -1;
+}
+
+.song-list {
+  border-top: 1px solid var(--rule);
+}
+
+.song-card {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--rule);
+  margin: 0;
+}
+
+.song-card-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.chip-row,
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.song-detail-hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.song-hero-main {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.detail-section {
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid var(--rule);
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0;
+  border-left: 1px solid var(--rule);
+  border-top: 1px solid var(--rule);
+}
+
+.detail-item {
+  padding: 12px;
+  border-right: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+
+.detail-item span {
+  display: block;
+  font-size: var(--fs-meta);
+  letter-spacing: 0.1em;
+  color: var(--mud);
+}
+
+.detail-item strong {
+  font-size: var(--fs-body);
+  font-weight: 700;
+}
+
+.magic-moment-text {
+  white-space: pre-line;
+  border-left: 2px solid var(--rule);
+  padding: 8px 12px;
+  margin: 0;
+}
+
+.empty-state {
+  border: 1px solid var(--rule);
+  padding: 16px;
+}
+
+@media (max-width: 700px) {
+  main { padding: 16px; }
+  .form-grid,
+  .detail-grid { grid-template-columns: 1fr; }
+  .song-card,
+  .song-detail-hero { flex-direction: column; }
+}

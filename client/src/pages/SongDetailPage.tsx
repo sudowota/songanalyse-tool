@@ -38,7 +38,6 @@ export default function SongDetailPage() {
       <div className="window-inner">
         <header className="song-detail-hero">
           <div className="song-hero-main">
-            <div className="cd cd-large" aria-hidden="true" />
 
             <div>
               <p className="eyebrow">Blue Notes</p>

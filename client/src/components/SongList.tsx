@@ -17,7 +17,6 @@ export default function SongList({ songs, onDeleteSong }: SongListProps) {
 
       {songs.map((song) => (
         <article className="song-card" key={song._id}>
-          <div className="cd" aria-hidden="true" />
 
           <div className="song-card-body">
             <h3>{song.title}</h3>

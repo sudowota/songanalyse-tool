@@ -1,0 +1,14 @@
+/* Option A: Yeezy Earth. Einzige Stelle zum Ändern von Farben und Schriften. */
+:root {
+  --sand: #d8cbb0;
+  --offwhite: #ebe6da;
+  --khaki: #8a8065;
+  --mud: #5c5244;
+  --charcoal: #161616;
+  --rule: #161616;
+  --font-mono: "JetBrains Mono", "SF Mono", "Fira Code", "Courier New", monospace;
+  --font-pixel: var(--font-mono);
+  --fs-meta: 12px;
+  --fs-body: 14px;
+  --fs-title: 28px;
+}

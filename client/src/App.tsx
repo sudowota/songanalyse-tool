@@ -9,12 +9,12 @@ export default function App() {
     <main>
       <nav>
         <Link className="brand" to="/">
-          Blue Notes
+          blue notes
         </Link>
 
         <div>
-          <Link to="/">Songs</Link>{" "}
-          <Link to="/new">+ Neuer Song</Link>
+          <Link to="/">[01] songs</Link>{" "}
+          <Link to="/new">[02] neu</Link>
         </div>
       </nav>
 
