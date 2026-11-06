@@ -14,6 +14,8 @@
   --tape-blue: #7cc4ff;
   --glass-fill: rgba(255, 255, 255, 0.42);
   --glass-edge: rgba(255, 255, 255, 0.85);
+  /* EINZIGE Stelle für die Schrift der gesamten App */
+  --font-pixel: "VT323", monospace;
   /* Platzhalter für spätere Stimmungs-Landschaften pro Mood */
   --mood-tint: transparent;
 }
@@ -25,8 +27,9 @@
 body {
   margin: 0;
   min-height: 100vh;
-  font-family: "Space Grotesk", Arial, Helvetica, sans-serif;
+  font-family: var(--font-pixel);
   color: var(--graphite);
+  font-size: 20px;
   background: radial-gradient(
     ellipse at 50% 25%,
     var(--studio-light) 0%,
@@ -85,7 +88,7 @@ nav a:hover {
 }
 
 .brand {
-  font-family: "Michroma", sans-serif;
+  font-family: var(--font-pixel);
   font-size: 14px;
   letter-spacing: 0.22em;
   background: linear-gradient(90deg, #111113, #9a9aa0 50%, #111113);
@@ -97,7 +100,7 @@ nav a:hover {
 /* ---------- Typografie ---------- */
 
 h1 {
-  font-family: "Michroma", sans-serif;
+  font-family: var(--font-pixel);
   font-weight: 400;
   font-size: 30px;
   letter-spacing: 0.06em;
@@ -106,7 +109,7 @@ h1 {
 }
 
 h2 {
-  font-family: "Michroma", sans-serif;
+  font-family: var(--font-pixel);
   font-weight: 400;
   font-size: 13px;
   letter-spacing: 0.16em;
@@ -127,7 +130,7 @@ p {
 
 .eyebrow {
   margin: 0 0 6px;
-  font-family: "Michroma", sans-serif;
+  font-family: var(--font-pixel);
   font-size: 11px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
@@ -342,7 +345,7 @@ textarea:focus {
 
 button,
 .button-link {
-  font-family: "Space Grotesk", sans-serif;
+  font-family: var(--font-pixel);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -517,7 +520,7 @@ button:disabled {
 }
 
 .bpm-badge span {
-  font-family: "Michroma", sans-serif;
+  font-family: var(--font-pixel);
   font-size: 24px;
 }
 
