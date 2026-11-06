@@ -188,3 +188,43 @@ button:disabled {
   font-size: var(--fs-meta);
   letter-spacing: 0.1em;
 }
+
+/* ---------- Lyrics-Editor: zwei Spalten mit Vorschau ---------- */
+
+.lyrics-panes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  flex: 1;
+  min-height: 0;
+}
+
+.lyrics-pane {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.lyrics-pane-label {
+  margin: 0 0 6px;
+  font-size: var(--fs-meta);
+  letter-spacing: 0.1em;
+  color: var(--mud);
+}
+
+.lyrics-preview {
+  flex: 1;
+  overflow-y: auto;
+  border: 1px solid var(--rule);
+  padding: 8px 12px;
+}
+
+.lyrics-preview .lyrics-view {
+  margin-top: 0;
+}
+
+@media (max-width: 700px) {
+  .lyrics-panes {
+    grid-template-columns: 1fr;
+  }
+}
