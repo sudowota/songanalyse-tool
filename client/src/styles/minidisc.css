@@ -39,7 +39,7 @@
   }
 }
 
-/* Gehäuse: transparent eingefärbt, mit Glanz */
+/* Gehäuse: Foto der MiniDisc */
 .minidisc {
   width: 100%;
   max-width: 340px;
@@ -49,162 +49,21 @@
 .minidisc-shell {
   position: relative;
   width: 100%;
-  aspect-ratio: 1 / 1;
-  overflow: hidden;
-  background: linear-gradient(
-    135deg,
-    color-mix(in srgb, var(--disc-color) 55%, #fff 45%) 0%,
-    color-mix(in srgb, var(--disc-color) 80%, transparent) 55%,
-    color-mix(in srgb, var(--disc-color) 70%, #000 30%) 100%
-  );
-  border: 2px solid color-mix(in srgb, var(--disc-ink) 70%, transparent);
-  clip-path: polygon(
-    10px 0, 100% 0, 100% calc(100% - 10px),
-    calc(100% - 10px) 100%, 0 100%, 0 10px
-  );
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.35),
-    inset 0 -24px 40px rgba(0, 0, 0, 0.25);
 }
 
-/* Glanz über dem Gehäuse */
-.minidisc-shell::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background: linear-gradient(
-    115deg,
-    rgba(255, 255, 255, 0.45) 0%,
-    rgba(255, 255, 255, 0) 30%,
-    rgba(255, 255, 255, 0) 70%,
-    rgba(255, 255, 255, 0.18) 100%
-  );
+.minidisc-bild {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 .minidisc-marke {
   position: absolute;
-  top: 9%;
-  left: 8%;
+  top: 5%;
+  left: 7%;
   font-family: var(--font-disc-brand);
-  font-size: 12px;
-  color: #fff;
-  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
-}
-
-.minidisc-rec {
-  position: absolute;
-  bottom: 7%;
-  right: 8%;
-  font-family: var(--font-disc-label);
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  color: #fff;
-}
-
-/* Einlegepfeil oben rechts */
-.minidisc-einlegen {
-  position: absolute;
-  top: 6%;
-  right: 6%;
-  font-family: var(--font-disc-label);
   font-size: 10px;
-  color: #fff;
-  white-space: nowrap;
-}
-
-/* Metall-Verschluss rechts Mitte */
-.minidisc-shutter {
-  position: absolute;
-  top: 34%;
-  left: 60%;
-  width: 40%;
-  height: 27%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(180deg, #d9dce0, #8b9096 60%, #5d6168);
-  border: 2px solid rgba(0, 0, 0, 0.45);
-  box-shadow: inset 2px 2px 0 rgba(255, 255, 255, 0.6);
-}
-
-.minidisc-shutter span {
-  font-family: var(--font-disc-label);
-  font-size: 10px;
-  color: var(--disc-ink);
-  white-space: nowrap;
-}
-
-/* Disc im Inneren, leicht transparent */
-.minidisc-disc-wrap {
-  position: absolute;
-  left: 46%;
-  top: 47%;
-  width: 80%;
-  aspect-ratio: 1 / 1;
-  transform: translate(-50%, -50%);
-}
-
-.minidisc-disc {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  background:
-    radial-gradient(
-      circle,
-      transparent 38%,
-      rgba(255, 150, 220, 0.14) 52%,
-      rgba(140, 230, 255, 0.14) 64%,
-      transparent 78%
-    ),
-    conic-gradient(
-      from 200deg,
-      #2b2b30 0deg,
-      #c9ced8 22deg,
-      #3a3d44 55deg,
-      #e8ecf2 90deg,
-      #2a2b30 125deg,
-      #b6bdc9 160deg,
-      #3b3e46 195deg,
-      #e4e8ef 235deg,
-      #2a2b30 275deg,
-      #c4cad5 315deg,
-      #2b2b30 360deg
-    );
-  box-shadow: inset 0 0 0 3px rgba(255, 255, 255, 0.28),
-    inset 0 0 0 10px rgba(0, 0, 0, 0.22);
-  animation: minidisc-spin 0.9s ease-out;
-}
-
-.minidisc-hub {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 36%;
-  height: 36%;
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
-  background: radial-gradient(
-    circle,
-    #f4f6f8 0 8%,
-    #aeb4bd 9% 22%,
-    #2b2b30 23% 30%,
-    transparent 31%
-  );
-}
-
-@keyframes minidisc-spin {
-  from {
-    transform: rotate(-140deg);
-  }
-  to {
-    transform: rotate(0deg);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .minidisc-disc {
-    animation: none;
-  }
+  color: var(--charcoal);
 }
 
 /* Technische Labels direkt unter dem Gehäuse */

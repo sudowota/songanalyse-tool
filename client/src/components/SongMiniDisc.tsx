@@ -63,23 +63,12 @@ function wertOderLeer(wert: string): string {
   return wert;
 }
 
-export default function SongMiniDisc({ daten, drehKey }: SongMiniDiscProps) {
+export default function SongMiniDisc({ daten }: SongMiniDiscProps) {
   return (
     <div className="minidisc">
       <div className="minidisc-shell">
+        <img className="minidisc-bild" src="/minidisc/md.png" alt="" />
         <span className="minidisc-marke">{c.marke}</span>
-        <span className="minidisc-einlegen">{c.einlegen}</span>
-        <span className="minidisc-rec">{c.aufdruck}</span>
-
-        <div className="minidisc-shutter">
-          <span>{c.modell}</span>
-        </div>
-
-        <div className="minidisc-disc-wrap">
-          <div className="minidisc-disc" key={drehKey}>
-            <div className="minidisc-hub" />
-          </div>
-        </div>
       </div>
 
       <div className="minidisc-info">
