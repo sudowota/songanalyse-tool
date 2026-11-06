@@ -1,4 +1,4 @@
-import { miniDiscConfig as c } from "../config/songMiniDisc";
+import { miniDiscConfig as c, discFarben, standardFarbe, type DiscFarbe } from "../config/songMiniDisc";
 
 export type MiniDiscDaten = {
   titel: string;
@@ -13,6 +13,8 @@ type SongMiniDiscProps = {
   daten: MiniDiscDaten;
   // Wenn sich dieser Wert ändert, dreht sich die Disc einmal (z. B. Song-ID)
   drehKey: string;
+  // Optional: Farbe der Disc. Ohne Angabe gilt Orange.
+  farbe?: DiscFarbe;
 };
 
 // AAA: Status aus dem bestehenden Feld analysisStatus, lesbar übersetzt.
@@ -63,11 +65,12 @@ function wertOderLeer(wert: string): string {
   return wert;
 }
 
-export default function SongMiniDisc({ daten }: SongMiniDiscProps) {
+export default function SongMiniDisc({ daten, farbe }: SongMiniDiscProps) {
+  const bildQuelle = discFarben[farbe ?? standardFarbe];
   return (
     <div className="minidisc">
       <div className="minidisc-shell">
-        <img className="minidisc-bild" src="/minidisc/md-orange.png" alt="" />
+        <img className="minidisc-bild" src={bildQuelle} alt="" />
       </div>
 
       <div className="minidisc-info">

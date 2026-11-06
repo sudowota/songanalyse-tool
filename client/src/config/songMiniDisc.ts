@@ -15,3 +15,22 @@ export const miniDiscConfig = {
     datum: "DATE",
   },
 };
+
+// AAA: Verfügbare Farben der MiniDisc. Standard ist Orange.
+// Später soll die Farbe aus dem Vibe des Songs kommen (noch nicht umgesetzt).
+export const discFarben = {
+  orange: "/minidisc/md-orange.png",
+  purple: "/minidisc/colors/purple.webp",
+  blue: "/minidisc/colors/blue.webp",
+  yellow: "/minidisc/colors/yellow.webp",
+  lightblue: "/minidisc/colors/lightblue.webp",
+  pink: "/minidisc/colors/pink.webp",
+  mint: "/minidisc/colors/mint.webp",
+  green: "/minidisc/colors/green.webp",
+  black: "/minidisc/colors/black.webp",
+  clear: "/minidisc/colors/clear.webp",
+} as const;
+
+export type DiscFarbe = keyof typeof discFarben;
+
+export const standardFarbe: DiscFarbe = "orange";
