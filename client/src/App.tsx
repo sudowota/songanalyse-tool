@@ -4,6 +4,7 @@ import SongListPage from "./pages/SongListPage";
 import SongDetailPage from "./pages/SongDetailPage";
 import SongEditPage from "./pages/SongEditPage";
 import ProfileBadge from "./components/ProfileBadge";
+import BadgePage from "./pages/BadgePage";
 
 export default function App() {
   return (
@@ -20,7 +21,8 @@ export default function App() {
 
         <div>
           <Link to="/">[01] songs</Link>{" "}
-          <Link to="/new">[02] neu</Link>
+          <Link to="/new">[02] neu</Link>{" "}
+          <Link to="/badge">[03] badge</Link>
         </div>
       </nav>
 
@@ -29,6 +31,7 @@ export default function App() {
         <Route path="/new" element={<SongFormPage />} />
         <Route path="/songs/:id" element={<SongDetailPage />} />
         <Route path="/songs/:id/edit" element={<SongEditPage />} />
+        <Route path="/badge" element={<BadgePage />} />
       </Routes>
     </main>
   );
