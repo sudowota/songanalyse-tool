@@ -1,6 +1,8 @@
 // AAA: Alle Texte der MiniDisc. Hier änderst du Marke, Untertitel und Labels.
 export const miniDiscConfig = {
-  marke: "SONY",
+  marke: "STYLES",
+  einlegen: "INSERT THIS END ▲",
+  aufdruck: "RECORDABLE MD",
   untertitel: "VOCAL SESSION",
   modell: "MINIDISC 80",
   leer: "—",

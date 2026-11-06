@@ -68,7 +68,8 @@ export default function SongMiniDisc({ daten, drehKey }: SongMiniDiscProps) {
     <div className="minidisc">
       <div className="minidisc-shell">
         <span className="minidisc-marke">{c.marke}</span>
-        <span className="minidisc-rec">RECORDABLE MD</span>
+        <span className="minidisc-einlegen">{c.einlegen}</span>
+        <span className="minidisc-rec">{c.aufdruck}</span>
 
         <div className="minidisc-shutter">
           <span>{c.modell}</span>

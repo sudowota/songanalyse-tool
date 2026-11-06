@@ -99,13 +99,24 @@
   color: #fff;
 }
 
-/* Metall-Verschluss oben rechts */
+/* Einlegepfeil oben rechts */
+.minidisc-einlegen {
+  position: absolute;
+  top: 6%;
+  right: 6%;
+  font-family: var(--font-disc-label);
+  font-size: 10px;
+  color: #fff;
+  white-space: nowrap;
+}
+
+/* Metall-Verschluss rechts Mitte */
 .minidisc-shutter {
   position: absolute;
-  top: 12%;
-  right: 10%;
-  width: 36%;
-  height: 28%;
+  top: 34%;
+  left: 60%;
+  width: 40%;
+  height: 27%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -124,9 +135,9 @@
 /* Disc im Inneren, leicht transparent */
 .minidisc-disc-wrap {
   position: absolute;
-  left: 50%;
-  top: 54%;
-  width: 58%;
+  left: 46%;
+  top: 47%;
+  width: 80%;
   aspect-ratio: 1 / 1;
   transform: translate(-50%, -50%);
 }
@@ -156,8 +167,8 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 28%;
-  height: 28%;
+  width: 36%;
+  height: 36%;
   transform: translate(-50%, -50%);
   border-radius: 50%;
   background: radial-gradient(
