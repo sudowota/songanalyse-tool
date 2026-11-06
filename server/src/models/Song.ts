@@ -49,6 +49,10 @@ normalizedProgression: {
       trim: true,
       default: "",
     },
+    lyrics: {
+      type: String,
+      default: "",
+    },
     analysisStatus: {
       type: String,
       enum: ["offen", "analysiert"],

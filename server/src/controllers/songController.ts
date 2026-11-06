@@ -12,6 +12,7 @@ type CreateSongRequestBody = {
   feeling?: string;
   associations?: string[];
   magicMoment?: string;
+  lyrics?: string;
 };
 
 export async function createSong(
@@ -29,6 +30,7 @@ export async function createSong(
       feeling,
       associations,
       magicMoment,
+      lyrics,
     } = req.body;
 
     if (!title || typeof title !== "string" || title.trim() === "") {
@@ -53,6 +55,7 @@ const normalizedProgression =
       feeling: typeof feeling === "string" ? feeling.trim() : "",
       associations: Array.isArray(associations) ? associations : [],
       magicMoment: typeof magicMoment === "string" ? magicMoment.trim() : "",
+      lyrics: typeof lyrics === "string" ? lyrics : "",
     });
 
     res.status(201).json(song);
@@ -167,6 +170,7 @@ export async function updateSong(req: Request, res: Response): Promise<void> {
       feeling,
       associations,
       magicMoment,
+      lyrics,
     } = req.body;
 
     const cleanedProgression =
@@ -188,6 +192,7 @@ export async function updateSong(req: Request, res: Response): Promise<void> {
         feeling: typeof feeling === "string" ? feeling.trim() : "",
         associations: Array.isArray(associations) ? associations : [],
         magicMoment: typeof magicMoment === "string" ? magicMoment.trim() : "",
+        lyrics: typeof lyrics === "string" ? lyrics : "",
       },
       { new: true, runValidators: true }
     );

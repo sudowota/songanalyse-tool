@@ -2,11 +2,13 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { getSongById } from "../api/songApi";
 import type { Song } from "../types/song";
+import LyricsView from "../components/LyricsView";
 
 export default function SongDetailPage() {
   const { id } = useParams<{ id: string }>();
   const [song, setSong] = useState<Song | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [zeigeLyrics, setZeigeLyrics] = useState(false);
 
   useEffect(() => {
     async function loadSong() {
@@ -84,6 +86,14 @@ export default function SongDetailPage() {
           <p className="magic-moment-text">
             {song.magicMoment || "Noch keine Magic Moments notiert."}
           </p>
+        </div>
+
+        <div className="detail-section">
+          <h2>lyrics</h2>
+          <button type="button" onClick={() => setZeigeLyrics(!zeigeLyrics)}>
+            {zeigeLyrics ? "ausblenden" : "anzeigen"}
+          </button>
+          {zeigeLyrics && <LyricsView text={song.lyrics} />}
         </div>
 
         <div className="detail-section">

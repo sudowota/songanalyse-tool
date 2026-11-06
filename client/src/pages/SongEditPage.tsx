@@ -55,6 +55,8 @@ export default function SongEditPage() {
           groove: song.groove,
           instruments: song.instruments,
           feeling: song.feeling,
+          magicMoment: song.magicMoment,
+          lyrics: song.lyrics,
           associations: song.associations,
         }}
         submitLabel="Änderungen speichern"
