@@ -1,6 +1,7 @@
 import { useEffect, useState, type FormEvent } from "react";
 import { createUser, listUsers, type NutzerZeile } from "../api/userApi";
 import type { Rolle } from "../api/authApi";
+import PasswordInput from "../components/PasswordInput";
 
 // AAA: Nutzerverwaltung. Admins sehen alle Konten und legen neue an.
 export default function AdminUsersPage() {
@@ -61,10 +62,10 @@ export default function AdminUsersPage() {
 
             <div className="form-group">
               <label>passwort (min. 8 zeichen)</label>
-              <input
-                type="password"
+              <PasswordInput
                 value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={setPassword}
+                autoComplete="new-password"
               />
             </div>
 
