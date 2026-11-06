@@ -49,6 +49,11 @@ normalizedProgression: {
       trim: true,
       default: "",
     },
+    tonart: {
+      type: String,
+      trim: true,
+      default: "",
+    },
     lyrics: {
       type: String,
       default: "",

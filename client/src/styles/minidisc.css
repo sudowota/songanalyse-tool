@@ -1,0 +1,230 @@
+/* ==========================================================
+   SongMiniDisc: transparente MiniDisc in Orange
+   Farbe, Fonts und Größen stehen in den Variablen oben.
+   ========================================================== */
+
+:root {
+  --disc-color: #ff5b1f;
+  --disc-ink: #2a0d05;
+  --font-disc-brand: "Press Start 2P", monospace;
+  --font-disc-label: "Silkscreen", monospace;
+  --font-disc-info: "VT323", monospace;
+}
+
+/* Layout: Formular links, MiniDisc rechts. Auf dem Handy darunter. */
+.song-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) clamp(250px, 30vw, 340px);
+  gap: 24px;
+  align-items: start;
+}
+
+.song-layout-main {
+  min-width: 0;
+}
+
+.song-layout-side {
+  position: sticky;
+  top: 16px;
+}
+
+@media (max-width: 900px) {
+  .song-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .song-layout-side {
+    position: static;
+  }
+}
+
+/* Gehäuse: transparent eingefärbt, mit Glanz */
+.minidisc {
+  width: 100%;
+  max-width: 340px;
+  margin: 0 auto;
+}
+
+.minidisc-shell {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--disc-color) 85%, transparent),
+    color-mix(in srgb, var(--disc-color) 65%, #000 35%)
+  );
+  border: 2px solid color-mix(in srgb, var(--disc-ink) 70%, transparent);
+  clip-path: polygon(
+    10px 0, 100% 0, 100% calc(100% - 10px),
+    calc(100% - 10px) 100%, 0 100%, 0 10px
+  );
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.35),
+    inset 0 -24px 40px rgba(0, 0, 0, 0.25);
+}
+
+/* Glanz über dem Gehäuse */
+.minidisc-shell::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    115deg,
+    rgba(255, 255, 255, 0.45) 0%,
+    rgba(255, 255, 255, 0) 30%,
+    rgba(255, 255, 255, 0) 70%,
+    rgba(255, 255, 255, 0.18) 100%
+  );
+}
+
+.minidisc-marke {
+  position: absolute;
+  top: 9%;
+  left: 8%;
+  font-family: var(--font-disc-brand);
+  font-size: 12px;
+  color: #fff;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+}
+
+.minidisc-rec {
+  position: absolute;
+  bottom: 7%;
+  right: 8%;
+  font-family: var(--font-disc-label);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: #fff;
+}
+
+/* Metall-Verschluss oben rechts */
+.minidisc-shutter {
+  position: absolute;
+  top: 12%;
+  right: 10%;
+  width: 36%;
+  height: 28%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, #d9dce0, #8b9096 60%, #5d6168);
+  border: 2px solid rgba(0, 0, 0, 0.45);
+  box-shadow: inset 2px 2px 0 rgba(255, 255, 255, 0.6);
+}
+
+.minidisc-shutter span {
+  font-family: var(--font-disc-label);
+  font-size: 10px;
+  color: var(--disc-ink);
+  white-space: nowrap;
+}
+
+/* Disc im Inneren, leicht transparent */
+.minidisc-disc-wrap {
+  position: absolute;
+  left: 50%;
+  top: 54%;
+  width: 58%;
+  aspect-ratio: 1 / 1;
+  transform: translate(-50%, -50%);
+}
+
+.minidisc-disc {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 20deg,
+    rgba(58, 18, 8, 0.9),
+    rgba(255, 178, 122, 0.7),
+    rgba(42, 13, 5, 0.9),
+    rgba(255, 154, 92, 0.7),
+    rgba(58, 18, 8, 0.9),
+    rgba(255, 210, 176, 0.6),
+    rgba(42, 13, 5, 0.9),
+    rgba(255, 122, 60, 0.7),
+    rgba(58, 18, 8, 0.9)
+  );
+  box-shadow: inset 0 0 0 6px rgba(255, 255, 255, 0.12),
+    inset 0 0 0 12px rgba(0, 0, 0, 0.18);
+  animation: minidisc-spin 0.9s ease-out;
+}
+
+.minidisc-hub {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 28%;
+  height: 28%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    #e9ecef 0 12%,
+    #9aa0a6 13% 45%,
+    rgba(40, 10, 4, 0.7) 46% 100%
+  );
+}
+
+@keyframes minidisc-spin {
+  from {
+    transform: rotate(-140deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .minidisc-disc {
+    animation: none;
+  }
+}
+
+/* Technische Labels direkt unter dem Gehäuse */
+.minidisc-info {
+  margin-top: 12px;
+  padding: 12px 14px;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid var(--rule);
+}
+
+.minidisc-untertitel {
+  margin: 0 0 8px;
+  font-family: var(--font-disc-brand);
+  font-size: 9px;
+  line-height: 1.6;
+  color: var(--disc-ink);
+}
+
+.minidisc-info dl {
+  margin: 0;
+}
+
+.minidisc-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  padding: 2px 0;
+  border-bottom: 1px dashed var(--rule);
+}
+
+.minidisc-row dt {
+  margin: 0;
+  font-family: var(--font-disc-label);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+
+.minidisc-row dd {
+  margin: 0;
+  font-family: var(--font-disc-info);
+  font-size: 22px;
+  line-height: 1.1;
+  text-align: right;
+  word-break: break-word;
+}

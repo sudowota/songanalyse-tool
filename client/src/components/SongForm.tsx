@@ -1,23 +1,34 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { CreateSongData } from "../api/songApi";
 import LyricsEditor from "./LyricsEditor";
+
+// AAA: Was das Formular live an die MiniDisc meldet.
+export type MiniDiscEingabe = {
+  titel: string;
+  artist: string;
+  tonart: string;
+  tempo: string;
+};
 
 type SongFormProps = {
   onAddSong: (data: CreateSongData) => Promise<void>;
   initialValues?: Partial<CreateSongData>;
   submitLabel?: string;
+  onVorschau?: (eingabe: MiniDiscEingabe) => void;
 };
 
 export default function SongForm({
   onAddSong,
   initialValues,
   submitLabel = "song speichern",
+  onVorschau,
 }: SongFormProps) {
   const [title, setTitle] = useState(initialValues?.title ?? "");
   const [artist, setArtist] = useState(initialValues?.artist ?? "");
   const [tempo, setTempo] = useState(
     initialValues?.tempo ? String(initialValues.tempo) : ""
   );
+  const [tonart, setTonart] = useState(initialValues?.tonart ?? "");
   const [progression, setProgression] = useState(
     initialValues?.progression ?? ""
   );
@@ -37,6 +48,13 @@ export default function SongForm({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [fehler, setFehler] = useState("");
 
+  // Schritt 1: Jede Änderung der Kerndaten sofort an die MiniDisc melden
+  useEffect(() => {
+    if (onVorschau) {
+      onVorschau({ titel: title, artist, tonart, tempo });
+    }
+  }, [title, artist, tonart, tempo]);
+
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
@@ -54,6 +72,7 @@ export default function SongForm({
         .filter(Boolean),
       feeling: feeling.trim(),
       magicMoment: magicMoment.trim(),
+      tonart: tonart.trim(),
       lyrics: lyrics,
       associations: associations
         .split(",")
@@ -89,6 +108,15 @@ export default function SongForm({
           <div className="form-group">
             <label>artist</label>
             <input value={artist} onChange={(e) => setArtist(e.target.value)} />
+          </div>
+
+          <div className="form-group">
+            <label>tonart</label>
+            <input
+              value={tonart}
+              onChange={(e) => setTonart(e.target.value)}
+              placeholder="z.b. f#m"
+            />
           </div>
 
           <div className="form-group">

@@ -13,6 +13,7 @@ type CreateSongRequestBody = {
   associations?: string[];
   magicMoment?: string;
   lyrics?: string;
+  tonart?: string;
 };
 
 export async function createSong(
@@ -31,6 +32,7 @@ export async function createSong(
       associations,
       magicMoment,
       lyrics,
+      tonart,
     } = req.body;
 
     if (!title || typeof title !== "string" || title.trim() === "") {
@@ -56,6 +58,7 @@ const normalizedProgression =
       associations: Array.isArray(associations) ? associations : [],
       magicMoment: typeof magicMoment === "string" ? magicMoment.trim() : "",
       lyrics: typeof lyrics === "string" ? lyrics : "",
+      tonart: typeof tonart === "string" ? tonart.trim() : "",
     });
 
     res.status(201).json(song);
@@ -171,6 +174,7 @@ export async function updateSong(req: Request, res: Response): Promise<void> {
       associations,
       magicMoment,
       lyrics,
+      tonart,
     } = req.body;
 
     const cleanedProgression =
@@ -193,6 +197,7 @@ export async function updateSong(req: Request, res: Response): Promise<void> {
         associations: Array.isArray(associations) ? associations : [],
         magicMoment: typeof magicMoment === "string" ? magicMoment.trim() : "",
         lyrics: typeof lyrics === "string" ? lyrics : "",
+        tonart: typeof tonart === "string" ? tonart.trim() : "",
       },
       { new: true, runValidators: true }
     );

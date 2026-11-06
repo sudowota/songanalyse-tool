@@ -4,6 +4,7 @@ import { getSongById } from "../api/songApi";
 import type { Song } from "../types/song";
 import LyricsView from "../components/LyricsView";
 import { useAuth } from "../context/AuthContext";
+import SongMiniDisc, { baueDaten } from "../components/SongMiniDisc";
 
 export default function SongDetailPage() {
   const { id } = useParams<{ id: string }>();
@@ -32,6 +33,8 @@ export default function SongDetailPage() {
 
   return (
     <section className="window-outer song-detail">
+      <div className="song-layout">
+      <div className="song-layout-main">
       <Link className="back-link" to="/">
         ← Zurück zur Liste
       </Link>
@@ -123,6 +126,22 @@ export default function SongDetailPage() {
               : "—"}
           </div>
         </div>
+      </div>
+
+      <aside className="song-layout-side">
+        <SongMiniDisc
+          drehKey={song._id}
+          daten={baueDaten({
+            titel: song.title,
+            artist: song.artist,
+            tonart: song.tonart ?? "",
+            bpm: song.tempo !== undefined ? String(song.tempo) : "",
+            analysisStatus: song.analysisStatus,
+            datum: song.updatedAt,
+          })}
+        />
+      </aside>
+      </div>
     </section>
   );
 }

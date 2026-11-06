@@ -14,6 +14,7 @@ export type CreateSongData = {
   instruments: string[];
   feeling: string;
   magicMoment: string;
+  tonart: string;
   lyrics: string;
   associations: string[];
 };
