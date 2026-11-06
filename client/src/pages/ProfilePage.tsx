@@ -61,12 +61,6 @@ export default function ProfilePage() {
         ← zurück zur liste
       </Link>
 
-      <div className="button-row">
-        <button type="button" onClick={handleLogout}>
-          [x] abmelden
-        </button>
-      </div>
-
       <h1>profil</h1>
 
       <div className="profile-badge-stage">
@@ -137,6 +131,11 @@ export default function ProfilePage() {
       {meldung && <p className="form-error">{meldung}</p>}
       </section>
       )}
+      <div className="button-row button-row-rechts">
+        <button type="button" onClick={handleLogout}>
+          [x] abmelden
+        </button>
+      </div>
     </>
   );
 }

@@ -97,9 +97,10 @@
 
 .minidisc-row dd {
   margin: 0;
-  font-family: var(--font-disc-info);
+  font-family: var(--font-disc-label);
   font-weight: 400;
-  font-size: 22px;
+  font-size: 12px;
+  letter-spacing: 0.06em;
   line-height: 1.1;
   text-align: right;
   word-break: break-word;

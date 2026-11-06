@@ -48,6 +48,7 @@ button:disabled {
 
 .back-link {
   display: inline-block;
+  margin-top: 28px;
   margin-bottom: 16px;
   font-size: var(--fs-meta);
   letter-spacing: 0.1em;
@@ -259,4 +260,11 @@ button:disabled {
 .password-toggle:hover {
   background: var(--charcoal);
   color: var(--offwhite);
+}
+
+/* Rechtsbündige Button-Reihe, z. B. Abmelden unten rechts */
+.button-row-rechts {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 24px;
 }
