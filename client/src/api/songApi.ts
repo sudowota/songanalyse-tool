@@ -1,6 +1,8 @@
 import type { Song } from "../types/song";
 
-const API_BASE_URL = "http://127.0.0.1:5001/api/songs";
+// AAA: Adresse des Backends. Lokal Standard, im Deploy über VITE_API_BASE_URL gesetzt.
+const API_BASE_URL =
+  import.meta.env.VITE_API_BASE_URL ?? "http://127.0.0.1:5001/api/songs";
 
 export type CreateSongData = {
   title: string;
