@@ -39,7 +39,7 @@
   }
 }
 
-/* Gehäuse: Foto der MiniDisc */
+/* Gehäuse: gezeichnete MiniDisc, füllt die ganze Fläche */
 .minidisc {
   width: 100%;
   max-width: 340px;
@@ -55,15 +55,8 @@
   display: block;
   width: 100%;
   height: auto;
-}
-
-.minidisc-marke {
-  position: absolute;
-  top: 5%;
-  left: 7%;
-  font-family: var(--font-disc-brand);
-  font-size: 10px;
-  color: var(--charcoal);
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
 }
 
 /* Technische Labels direkt unter dem Gehäuse */
@@ -76,10 +69,11 @@
 
 .minidisc-untertitel {
   margin: 0 0 8px;
-  font-family: var(--font-disc-brand);
-  font-size: 9px;
-  line-height: 1.6;
+  font-family: var(--font-disc-info);
+  font-size: 26px;
+  line-height: 1.1;
   color: var(--disc-ink);
+  word-break: break-word;
 }
 
 .minidisc-info dl {
@@ -106,6 +100,7 @@
 .minidisc-row dd {
   margin: 0;
   font-family: var(--font-disc-info);
+  font-weight: 400;
   font-size: 22px;
   line-height: 1.1;
   text-align: right;

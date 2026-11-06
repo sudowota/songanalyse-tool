@@ -67,20 +67,13 @@ export default function SongMiniDisc({ daten }: SongMiniDiscProps) {
   return (
     <div className="minidisc">
       <div className="minidisc-shell">
-        <img className="minidisc-bild" src="/minidisc/md.png" alt="" />
-        <span className="minidisc-marke">{c.marke}</span>
+        <img className="minidisc-bild" src="/minidisc/md.svg" alt="" />
       </div>
 
       <div className="minidisc-info">
-        <p className="minidisc-untertitel">
-          {c.marke} · {c.untertitel}
-        </p>
+        <p className="minidisc-untertitel">{wertOderLeer(daten.titel)}</p>
 
         <dl>
-          <div className="minidisc-row">
-            <dt>{c.labels.song}</dt>
-            <dd>{wertOderLeer(daten.titel)}</dd>
-          </div>
           <div className="minidisc-row">
             <dt>{c.labels.artist}</dt>
             <dd>{wertOderLeer(daten.artist)}</dd>
