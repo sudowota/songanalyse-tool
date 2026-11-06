@@ -1,15 +1,26 @@
 import { useEffect, useState } from "react";
-import { saveProfile } from "../api/profileApi";
+import { Link } from "react-router-dom";
+import { getProfile, saveProfile } from "../api/profileApi";
 import { pixelateImage } from "../utils/pixelate";
+import ArtistBadge from "../components/ArtistBadge";
 
-// AAA: Seite zum Hochladen. Foto wählen, Stärke einstellen, speichern.
-export default function BadgePage() {
+// AAA: Profilseite. Oben das große Badge, darunter die Einstellungen zum Hochladen.
+export default function ProfilePage() {
+  const [gespeichertesBild, setGespeichertesBild] = useState("");
+
   const [datei, setDatei] = useState<File | null>(null);
   const [groesse, setGroesse] = useState(32);
   const [stufen, setStufen] = useState(4);
   const [vorschau, setVorschau] = useState("");
   const [adminKey, setAdminKey] = useState("");
   const [meldung, setMeldung] = useState("");
+
+  // Schritt 0: Aktuelles Badge-Bild laden
+  useEffect(() => {
+    getProfile()
+      .then((bild) => setGespeichertesBild(bild))
+      .catch(() => setGespeichertesBild(""));
+  }, []);
 
   // Schritt 1: Bei jeder Änderung die Vorschau neu berechnen
   useEffect(() => {
@@ -27,7 +38,8 @@ export default function BadgePage() {
     try {
       setMeldung("speichert...");
       await saveProfile(vorschau, adminKey);
-      setMeldung("gespeichert. die startseite zeigt das neue badge.");
+      setGespeichertesBild(vorschau);
+      setMeldung("gespeichert. das badge zeigt jetzt das neue bild.");
     } catch (error) {
       const text = error instanceof Error ? error.message : "fehler";
       setMeldung(text);
@@ -35,8 +47,21 @@ export default function BadgePage() {
   }
 
   return (
-    <section className="window-outer">
-      <h2>badge-bild</h2>
+    <>
+      <Link className="back-link" to="/">
+        ← zurück zur liste
+      </Link>
+
+      <h1>profil</h1>
+
+      <div className="profile-badge-stage">
+        <ArtistBadge
+          config={gespeichertesBild ? { bildSrc: gespeichertesBild } : undefined}
+        />
+      </div>
+
+      <section className="window-outer">
+      <h2>badge-einstellungen</h2>
 
       <div className="form-grid">
         <div className="form-group form-group-wide">
@@ -101,6 +126,7 @@ export default function BadgePage() {
       </div>
 
       {meldung && <p className="form-error">{meldung}</p>}
-    </section>
+      </section>
+    </>
   );
 }

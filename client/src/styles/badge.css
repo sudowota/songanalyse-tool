@@ -211,3 +211,13 @@
   border: 1px solid var(--rule);
   image-rendering: pixelated;
 }
+
+.profile-badge-stage {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.profile-badge-stage .artist-badge {
+  width: min(320px, 100%);
+}
