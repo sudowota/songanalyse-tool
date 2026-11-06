@@ -156,3 +156,16 @@ nav a:hover {
   .song-card,
   .song-detail-hero { flex-direction: column; }
 }
+
+/* ---------- Logo über der Navigation ---------- */
+
+.top-logo {
+  padding-bottom: 16px;
+  margin-bottom: 16px;
+}
+
+.top-logo img {
+  display: block;
+  height: 40px;
+  width: auto;
+}

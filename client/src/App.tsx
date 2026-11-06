@@ -7,6 +7,10 @@ import SongEditPage from "./pages/SongEditPage";
 export default function App() {
   return (
     <main>
+      <header className="top-logo">
+        <img src="/logo/wotasoft.svg" alt="wotasoft" />
+      </header>
+
       <nav>
         <Link className="brand" to="/">
           style
