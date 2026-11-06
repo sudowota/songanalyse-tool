@@ -5,7 +5,7 @@ import SongDetailPage from "./pages/SongDetailPage";
 import SongEditPage from "./pages/SongEditPage";
 import ProfilePage from "./pages/ProfilePage";
 import LoginPage from "./pages/LoginPage";
-import AdminUsersPage from "./pages/AdminUsersPage";
+import AdminPage from "./pages/AdminUsersPage";
 import VxExercisesPage from "./pages/VxExercisesPage";
 import VxLevelPage from "./pages/VxLevelPage";
 import ProfileBadge from "./components/ProfileBadge";
@@ -13,10 +13,10 @@ import RequireAuth from "./components/RequireAuth";
 import { useAuth } from "./context/AuthContext";
 
 export default function App() {
-  const { nutzer, logout } = useAuth();
+  const { nutzer } = useAuth();
   const location = useLocation();
 
-  // AAA: Welcher Bereich ist gerade offen? STYLES oder VX.
+  // AAA: Welcher Bereich ist offen? STYLES oder VX.
   const imVx = location.pathname.startsWith("/vx");
   const darfSchreiben = nutzer?.role === "admin" || nutzer?.role === "teacher";
 
@@ -30,36 +30,26 @@ export default function App() {
       <nav className="main-nav">
         <div className="nav-links">
           <Link className="brand" to="/">STYLES</Link>
-          <Link className="brand" to="/vx">VX</Link>
-        </div>
 
-        <div className="nav-links">
-          {nutzer?.role === "admin" && <Link to="/admin/users">nutzer</Link>}
-          {nutzer ? (
-            <button type="button" onClick={logout}>
-              [x] abmelden
-            </button>
-          ) : (
-            <Link to="/login">anmelden</Link>
-          )}
-        </div>
-      </nav>
-
-      {nutzer && (
-        <nav className="sub-nav">
-          {imVx ? (
-            <>
-              <NavLink to="/vx/exercises">[01] exercises</NavLink>
-              <NavLink to="/vx/level">[02] level</NavLink>
-            </>
-          ) : (
+          {nutzer && !imVx && (
             <>
               <NavLink to="/">[01] songs</NavLink>
               {darfSchreiben && <NavLink to="/new">[02] neu</NavLink>}
             </>
           )}
-        </nav>
-      )}
+
+          <Link className="brand" to="/vx">VX</Link>
+
+          {nutzer && imVx && (
+            <>
+              <NavLink to="/vx/exercises">[01] exercises</NavLink>
+              <NavLink to="/vx/level">[02] level</NavLink>
+            </>
+          )}
+
+          {!nutzer && <NavLink to="/login">anmelden</NavLink>}
+        </div>
+      </nav>
 
       <Routes>
         <Route path="/login" element={<LoginPage />} />
@@ -68,7 +58,7 @@ export default function App() {
         <Route path="/songs/:id" element={<RequireAuth><SongDetailPage /></RequireAuth>} />
         <Route path="/songs/:id/edit" element={<RequireAuth rollen={["admin", "teacher"]}><SongEditPage /></RequireAuth>} />
         <Route path="/profile" element={<RequireAuth><ProfilePage /></RequireAuth>} />
-        <Route path="/admin/users" element={<RequireAuth rollen={["admin"]}><AdminUsersPage /></RequireAuth>} />
+        <Route path="/admin" element={<RequireAuth rollen={["admin"]}><AdminPage /></RequireAuth>} />
         <Route path="/vx" element={<Navigate to="/vx/exercises" replace />} />
         <Route path="/vx/exercises" element={<RequireAuth><VxExercisesPage /></RequireAuth>} />
         <Route path="/vx/level" element={<RequireAuth><VxLevelPage /></RequireAuth>} />

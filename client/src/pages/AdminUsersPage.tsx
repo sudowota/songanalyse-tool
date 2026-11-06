@@ -1,4 +1,5 @@
 import { useEffect, useState, type FormEvent } from "react";
+import { Link } from "react-router-dom";
 import { createUser, listUsers, resetUserPassword, type NutzerZeile } from "../api/userApi";
 import type { Rolle } from "../api/authApi";
 import PasswordInput from "../components/PasswordInput";
@@ -95,7 +96,7 @@ export default function AdminUsersPage() {
       setName("");
       setPassword("");
       setRole("student");
-      setMeldung("konto angelegt.");
+      setMeldung("user angelegt.");
       await ladeNutzer();
     } catch (error) {
       setMeldung(error instanceof Error ? error.message : "fehler beim anlegen.");
@@ -104,10 +105,16 @@ export default function AdminUsersPage() {
 
   return (
     <>
-      <h1>nutzer</h1>
+      <h1>admin</h1>
+
+      <div className="button-row">
+        <Link className="button-link" to="/profile">zum profil</Link>
+      </div>
+
+      <h2>user</h2>
 
       <section className="window-outer">
-        <h2>neues konto</h2>
+        <h2>neuer user</h2>
 
         <form className="form" onSubmit={handleAnlegen}>
           <div className="form-grid">
@@ -140,17 +147,17 @@ export default function AdminUsersPage() {
             </div>
           </div>
 
-          <button type="submit">konto anlegen</button>
+          <button type="submit">user anlegen</button>
         </form>
 
         {meldung && <p className="form-error">{meldung}</p>}
       </section>
 
       <section className="window-outer">
-        <h2>alle konten</h2>
+        <h2>alle user</h2>
 
         {nutzer.length === 0 ? (
-          <p>keine konten vorhanden.</p>
+          <p>keine user vorhanden.</p>
         ) : (
           <div className="song-list">
             {nutzer.map((zeile) => (

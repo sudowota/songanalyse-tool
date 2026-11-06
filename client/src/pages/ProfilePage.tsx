@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { getProfile, saveProfile } from "../api/profileApi";
 import { useAuth } from "../context/AuthContext";
 import { pixelateImage } from "../utils/pixelate";
@@ -8,7 +8,13 @@ import ChangePasswordForm from "../components/ChangePasswordForm";
 
 // AAA: Profilseite. Oben das große Badge, darunter die Einstellungen zum Hochladen.
 export default function ProfilePage() {
-  const { nutzer } = useAuth();
+  const { nutzer, logout } = useAuth();
+  const navigate = useNavigate();
+
+  function handleLogout() {
+    logout();
+    navigate("/login", { replace: true });
+  }
   const darfBearbeiten = nutzer?.role === "admin" || nutzer?.role === "teacher";
   const [gespeichertesBild, setGespeichertesBild] = useState("");
 
@@ -54,6 +60,12 @@ export default function ProfilePage() {
       <Link className="back-link" to="/">
         ← zurück zur liste
       </Link>
+
+      <div className="button-row">
+        <button type="button" onClick={handleLogout}>
+          [x] abmelden
+        </button>
+      </div>
 
       <h1>profil</h1>
 
