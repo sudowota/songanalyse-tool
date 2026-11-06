@@ -157,10 +157,11 @@
 .mini-badge {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  justify-content: center;
+  width: 40px;
   height: 40px;
   margin: 0;
-  padding: 0 10px 0 4px;
+  padding: 3px;
   background: var(--badge-cream);
   color: var(--badge-ink);
   border: 2px solid var(--badge-ink);
@@ -171,8 +172,9 @@
 }
 
 .mini-badge img {
-  width: 32px;
-  height: 32px;
+  display: block;
+  width: 100%;
+  height: 100%;
   border: 1px solid var(--badge-ink);
   image-rendering: pixelated;
 }

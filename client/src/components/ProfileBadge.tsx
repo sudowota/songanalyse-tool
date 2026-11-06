@@ -15,7 +15,6 @@ export default function ProfileBadge() {
         aria-label="profil-badge öffnen"
       >
         <img src={artistBadgeConfig.bildSrc} alt="" />
-        <span>{artistBadgeConfig.name}</span>
       </button>
 
       {istOffen && (
