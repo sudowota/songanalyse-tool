@@ -66,7 +66,6 @@ export default function SongForm({
 
   return (
     <section className="window-outer">
-    <div className="window-inner">
     <form className="form" onSubmit={handleSubmit}>
       <h2>Song analysieren</h2>
 
@@ -141,7 +140,6 @@ export default function SongForm({
         {isSubmitting ? "Speichert..." : submitLabel}
       </button>
     </form>
-    </div>
     </section>
   );
 }

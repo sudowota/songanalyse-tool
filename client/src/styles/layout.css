@@ -30,13 +30,17 @@ nav a:hover {
 
 /* Rahmen: nur hauchdünne Linien, keine Schatten */
 .window-outer,
-.window-inner,
-.filter-card,
-.form {
+.filter-card {
   border: 1px solid var(--rule);
   background: transparent;
-  padding: 24px;
+  padding: 16px;
   margin-bottom: 24px;
+}
+
+.form {
+  border: 0;
+  padding: 0;
+  margin: 0;
 }
 
 .form-grid {

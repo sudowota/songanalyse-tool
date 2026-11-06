@@ -9,7 +9,7 @@ export default function App() {
     <main>
       <nav>
         <Link className="brand" to="/">
-          blue notes
+          style
         </Link>
 
         <div>

@@ -35,7 +35,6 @@ export default function SongDetailPage() {
         Bearbeiten
       </Link>
 
-      <div className="window-inner">
         <header className="song-detail-hero">
           <div className="song-hero-main">
 
@@ -112,7 +111,6 @@ export default function SongDetailPage() {
               : "—"}
           </div>
         </div>
-      </div>
     </section>
   );
 }
