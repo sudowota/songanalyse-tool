@@ -39,3 +39,20 @@ export async function createUser(data: {
     throw new Error(daten.message ?? "Konto konnte nicht angelegt werden.");
   }
 }
+
+// AAA: Admin setzt das Passwort eines Kontos neu.
+export async function resetUserPassword(id: string, neuesPasswort: string): Promise<string> {
+  const response = await fetch(`${USERS_URL}/${id}/password`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json", ...authHeaders() },
+    body: JSON.stringify({ neuesPasswort }),
+  });
+
+  const daten = await response.json().catch(() => ({}));
+
+  if (!response.ok) {
+    throw new Error(daten.message ?? "Passwort konnte nicht gesetzt werden.");
+  }
+
+  return daten.message ?? "Passwort wurde neu gesetzt.";
+}
