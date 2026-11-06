@@ -655,3 +655,53 @@ button:active,
   border-color: #111113 #ffffff #ffffff #111113;
   transform: none;
 }
+
+
+/* ==========================================================
+   Buttons: minimalistischer Windows-Stil (graue Fläche, 3D-Kante)
+   ========================================================== */
+
+button,
+.button-link {
+  font-family: var(--font-pixel);
+  font-size: 20px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--graphite);
+  background: #d4d4d8;
+  border: 2px solid;
+  border-color: #ffffff #111113 #111113 #ffffff;
+  box-shadow: inset -1px -1px 0 #7a7a80, inset 1px 1px 0 #f5f5f7;
+  padding: 6px 18px;
+  margin-top: 0;
+  transform: none;
+}
+
+button:hover,
+.button-link:hover {
+  background: #e4e4e7;
+  box-shadow: inset -1px -1px 0 #7a7a80, inset 1px 1px 0 #f5f5f7;
+  transform: none;
+}
+
+button:active,
+.button-link:active {
+  background: #bdbdc2;
+  border-color: #111113 #ffffff #ffffff #111113;
+  box-shadow: inset 1px 1px 0 #7a7a80;
+}
+
+.danger-button {
+  background: #d4d4d8;
+  color: var(--graphite);
+}
+
+.danger-button:hover {
+  background: var(--cd-orange);
+  color: #111113;
+}
+
+.secondary-button {
+  background: #d4d4d8;
+  color: var(--graphite);
+}
